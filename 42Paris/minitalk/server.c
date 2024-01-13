@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:51:20 by whamdi            #+#    #+#             */
-/*   Updated: 2024/01/13 12:23:31 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/01/13 14:58:34 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(void)
 	ft_printf("the pid is : %d",p_id); //diplay the pid
 	ft_printf("\n");
 	signal(SIGUSR1,decrypter);
-	signal(SIGUSR1,decrypter);
+	signal(SIGUSR2,decrypter);
 	
 	return(0);
 }
