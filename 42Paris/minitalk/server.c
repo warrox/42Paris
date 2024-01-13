@@ -6,23 +6,40 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:51:20 by whamdi            #+#    #+#             */
-/*   Updated: 2024/01/02 16:17:46 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/01/13 12:23:31 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h> 
-#include <stdio.h>
-#include "Printf/ft_printf.h"
-#include <signal.h>
 #include "minitalk.h"
+
+void decrypter(int signalValue)
+{
+	// recoit des signals SIGURSR1 & SIGUSR2 puis les displays en char
+	static int power;
+	static char byte;
+	if(signalValue == SIGUSR2)
+	{
+		byte += 1 << (7 - power);
+	}
+	power++;
+	if(power == 8)
+	{
+		write(1,&byte,1);
+		power = 0;
+		byte = 0;
+	}
+}
 
 int main(void) 
 { 
-	int p_id;
+	pid_t p_id;
 	p_id = getpid();
-	sigset_t set;
-	sigemptyset(&set);	
-	ft_printf("Process id : %d",p_id);
+	ft_printf("the pid is : %d",p_id); //diplay the pid
+	ft_printf("\n");
+	signal(SIGUSR1,decrypter);
+	signal(SIGUSR1,decrypter);
+	
+	return(0);
 }
  
 

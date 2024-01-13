@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 15:51:27 by whamdi            #+#    #+#             */
-/*   Updated: 2024/01/13 12:02:14 by whamdi           ###   ########.fr       */
+/*   Created: 2024/01/13 12:00:00 by whamdi            #+#    #+#             */
+/*   Updated: 2024/01/13 12:05:17 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Printf/ft_printf.h"
-#include <unistd.h> 
-#include <stdio.h>
-#include <signal.h>
-#include <sys/types.h>
-typedef struct s_sign
+#include "minitalk.h"
+void	encoder(pid_t pid, char *str)
 {
-	int sign;
-	struct s_sign *next;
+	
+}
 
-} t_sign;
-
+int main(int argc, char **argv)
+{
+	if(argc == 3) // pid + string
+	{
+		encoder
+	}
+}
