@@ -143,32 +143,26 @@ void stack_visualizer(s_list *stack_a, s_list *stack_b)
 		stack_b = stack_b -> next;
 	}
 }
-int		is_lst_clean(s_list *lst, int i) // HERE je doit stocker les int recu et les comparer pour check si doublon
+int		is_lst_double_nb(s_list *lst)
 {
 	s_list *temp;
+	s_list *current;
 	int check_nbr;
-	int j;
-	int k = 0;
 	int flag = 0;
 	temp = lst;
-	while(temp->next != NULL)
+	current = lst;
+	while(current->next != NULL)
 	{
-		j = i;
-		check_nbr = temp->nbr;
-		while(j != 0)
+		check_nbr = current->nbr;
+		temp = current;
+		current = current->next;
+		while(temp->next != NULL)
 		{
 			if(temp->nbr == check_nbr)
-			{
 				flag += 1;
-				printf("GO IN\n");
-			}
 			if(temp->nbr == check_nbr && flag > 1)
-			{
-				printf("FIND A DOUBLE");
 				return(-1);
-			}
 			temp = temp->next;
-			j--;
 		}
 		flag = 0;
 	}

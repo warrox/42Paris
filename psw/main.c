@@ -24,8 +24,7 @@ int main(int argc, char **argv)
 	
 		i = 0;
 		i = ft_list_lenght(stack_a);
-		// TODO check if unique nbr in the list
-		if(is_lst_clean(stack_a,i) == - 1)
+		if(is_lst_double_nb(stack_a) == - 1)
 		{
 			display_error();
 			return(-1);
@@ -37,11 +36,6 @@ int main(int argc, char **argv)
 			i--;
 		}
 		stack_visualizer(stack_a,stack_b);
-		// while(stack_a->next != NULL) // testing
-		// {
-		// 	printf("%ld\n",stack_a->nbr);
-		// 	stack_a = stack_a->next;
-		// }
 	}
 }
 
