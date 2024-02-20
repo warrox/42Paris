@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	stack_b = NULL;
 	if(argc >= 1)
 	{
-		if(argc == 2)
+		if(argc == 2 && is_not_null(argv[1]) == 0)
 			str = ft_split(argv[1], ' ');
 		else
 			str = argv;

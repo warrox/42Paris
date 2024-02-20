@@ -266,14 +266,9 @@ int is_not_null(char *str)
 	int i;
 	i = 0;
 	while(str[i])
-	{
 		i++;
-	}
 	if(i == 0)
-	{
-		printf("NULL detected");
 		return(1);
-	}
 	return(0);
 }
 
