@@ -2,6 +2,7 @@
 
 int main(int argc, char **argv)
 {
+	char **str;
 	int i;
 	i = -1;
 	int flag = 0; // Pourquoi quand je passe i = 0 ca ne m'affiche pas le premier int du stack_a
@@ -9,16 +10,20 @@ int main(int argc, char **argv)
 	s_list *stack_b;
 	stack_a = NULL;
 	stack_b = NULL;
-	if(argc > 1)
+	if(argc >= 1)
 	{
-		while(argv[++i])
+		if(argc == 2)
+			str = ft_split(argv[1], ' ');
+		else
+			str = argv;
+		while(str[++i])
 		{
-			if ((ft_atoi_cust(argv[i]))== __LONG_MAX__ && flag == 1)
+			if (((ft_atoi_cust(str[i]))== __LONG_MAX__ && flag == 1) || is_not_null(str[i]) == 1)
 			{
-				write(1,"Error\n",6);
+				display_error();
 				return(-1);
 			}
-			ft_lstadd_front(&stack_a,ft_lstnew(ft_atoi_cust(argv[i])));
+			ft_lstadd_front(&stack_a,ft_lstnew(ft_atoi_cust(str[i])));
 			flag = 1;
 		}
 	

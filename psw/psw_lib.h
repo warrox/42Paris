@@ -15,7 +15,7 @@ long ft_atoi_cust(const char *nbr);
 int	ft_strncmp(const char *first, const char *second, size_t length);
 size_t	ft_strlen(const char *s);
 char	*ft_itoa(int n);
-
+char	**ft_split(char const *s, char c);
 /*******************************************************************/
 /*                        LIST CUSTOM FUNC                     	   */
 /*******************************************************************/
@@ -30,4 +30,5 @@ int		is_lst_double_nb(s_list *lst);
 /*******************************************************************/
 void stack_visualizer(s_list *stack_a, s_list *stack_b);
 void display_error(void);
+int is_not_null(char *str);
 #endif
