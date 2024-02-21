@@ -7,7 +7,17 @@ typedef struct t_list
 {
 	long nbr;
 	struct t_list *next;
-}s_list;
+} s_list;
+
+typedef struct s_data
+{
+	int i;
+	int flag;
+	int argc;
+	char **argv;
+	s_list *stack_a;
+	s_list *stack_b;
+} t_data;
 /*******************************************************************/
 /*                        LIBFT CUSTOM FUNC                        */
 /*******************************************************************/
