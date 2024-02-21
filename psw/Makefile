@@ -1,8 +1,8 @@
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
-SRCS = main.c psw_utils.c
+SRCS = main.c psw_utils.c parser.c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)

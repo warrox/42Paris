@@ -21,11 +21,7 @@ int main(int argc, char **argv)
 			i--;
 		}
 		stack_visualizer(head,stack_b);
-		// while(head->next != NULL) // testing
-		// {
-		// 	printf("%ld\n",head->nbr);
-		// 	head = head->next;
-		// }
+		
 	}
 }
 
