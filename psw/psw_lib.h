@@ -15,9 +15,21 @@ typedef struct s_data
 	int flag;
 	int argc;
 	char **argv;
+	int sa;
+	int sb;
+	int ss;
+	int pa;
+	int pb;
+	int ra;
+	int rb;
+	int rr;
+	int rra;
+	int rrb;
+
 	s_list *stack_a;
 	s_list *stack_b;
 } t_data;
+
 /*******************************************************************/
 /*                        LIBFT CUSTOM FUNC                        */
 /*******************************************************************/
@@ -53,5 +65,9 @@ int is_not_null(char *str);
 /*******************************************************************/
 int ft_psw_parser(t_data *data);
 
+/*******************************************************************/
+/*                        PUSH FUNC             		           */
+/*******************************************************************/
+void ft_push_a_to_b(t_data *data);
 
 #endif

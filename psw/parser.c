@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/21 13:45:20 by whamdi            #+#    #+#             */
+/*   Updated: 2024/02/21 15:29:35 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "psw_lib.h"
 
 int ft_psw_parser(t_data *data)
@@ -18,7 +30,7 @@ int ft_psw_parser(t_data *data)
 	if(is_lst_double_nb(data->stack_a) == - 1)
 	{
 		display_error();
-		return(-1);
+		exit(1);
 	}
 	// create empty stack_b
 	while(data->i != 0)

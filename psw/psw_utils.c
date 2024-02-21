@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   psw_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/21 13:44:53 by whamdi            #+#    #+#             */
+/*   Updated: 2024/02/21 17:12:01 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "psw_lib.h"
 
 size_t	ft_strlen(const char *s)
@@ -175,25 +188,20 @@ int		is_lst_double_nb(s_list *lst)
 {
 	s_list *temp;
 	s_list *current;
-	int check_nbr;
-	int flag = 0;
-	temp = lst;
 	current = lst;
-	while(current->next != NULL)
+	int check_nbr;
+	while(current->next)
 	{
-		check_nbr = current->nbr;
 		temp = current;
-		current = current->next;
-		while(temp->next != NULL)
+		check_nbr = temp->nbr;
+		while(temp->next)
 		{
-			if(temp->nbr == check_nbr)
-				flag += 1;
-			if(temp->nbr == check_nbr && flag > 1)
+			if(check_nbr == temp->next->nbr)
 				return(-1);
 			temp = temp->next;
-		}
-		flag = 0;
-	}
+		}	
+		current = current->next;
+	}	
 	return(0);
 }
 void display_error(void)
@@ -300,5 +308,20 @@ int is_not_null(char *str)
 	return(0);
 }
 
-
+void ft_push_a_to_b(t_data *data) // TO DEBUG
+{
+	t_data *temp;
+	temp = data;
+	temp->i = ft_list_lenght(temp->stack_a);
+	while(temp->i > 3)
+	{
+		temp->stack_a = data->stack_a;
+		data->stack_a = data->stack_a->next;
+		
+		temp->stack_a->next = data->stack_b;
+		data->stack_b = temp->stack_b;
+		temp->i--;
+	}
+	
+}
 
