@@ -23,23 +23,29 @@ int main(int argc, char **argv)
 				display_error();
 				return(-1);
 			}
-			ft_lstadd_front(&stack_a,ft_lstnew(ft_atoi_cust(str[i])));
+			if(ft_atoi_cust(str[i])!= __LONG_MAX__)
+			{	
+				ft_lstadd_front(&stack_a,ft_lstnew(ft_atoi_cust(str[i])));
+				printf("%ld",stack_a->nbr);
+			}
+		
 			flag = 1;
 		}
-	
-		i = 0;
-		i = ft_list_lenght(stack_a);
+		i= 0;
+		i = ft_list_lenght(stack_a);	
 		if(is_lst_double_nb(stack_a) == - 1)
 		{
 			display_error();
 			return(-1);
 		}
 		// create empty stack_b
+	//	printf("Result of i :%d\n",i);
 		while(i != 0)
 		{
 			ft_lstadd_front(&stack_b,ft_lstnew(0));
 			i--;
 		}
+		
 		stack_visualizer(stack_a,stack_b);
 	}
 }

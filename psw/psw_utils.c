@@ -114,9 +114,9 @@ void	ft_lstadd_front(s_list **lst, s_list *new)
 		*lst = new;
 	}
 }
-size_t ft_list_lenght(s_list *lst)
+int ft_list_lenght(s_list *lst)
 {
-	size_t i;
+	int i;
 	s_list *temp;
 	temp = lst;
 	i = 0;
@@ -125,7 +125,7 @@ size_t ft_list_lenght(s_list *lst)
 		temp = temp->next;
 		i++;
 	}
-	return(i);
+	return(i + 1);// not sure to check if valid
 }
 
 void stack_visualizer(s_list *stack_a, s_list *stack_b)
