@@ -114,6 +114,34 @@ void	ft_lstadd_front(s_list **lst, s_list *new)
 		*lst = new;
 	}
 }
+s_list	*ft_lstlast(s_list *lst)
+{
+	s_list	*current;
+
+	if (!lst)
+		return (NULL);
+	current = lst;
+	while (current->next != NULL)
+	{
+		current = current->next;
+	}
+	return (current);
+}
+void	ft_lstadd_back(s_list **lst, s_list *new)
+{
+	s_list	*tmp;
+
+	if (lst && new)
+	{
+		if (*lst == NULL)
+			*lst = new;
+		else
+		{
+			tmp = ft_lstlast((*lst));
+			tmp->next = new;
+		}
+	}
+}
 int ft_list_lenght(s_list *lst)
 {
 	int i;

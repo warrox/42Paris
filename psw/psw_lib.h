@@ -23,6 +23,7 @@ char	**ft_split(char const *s, char c);
 s_list	*ft_lstnew(long nb);
 void	ft_lstadd_front(s_list **lst, s_list *new);
 int ft_list_lenght(s_list *lst);
+void	ft_lstadd_back(s_list **lst, s_list *new);
 
 /*******************************************************************/
 /*                        PRINT  FUNC                 			   */

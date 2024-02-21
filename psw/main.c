@@ -26,7 +26,6 @@ int main(int argc, char **argv)
 			if(ft_atoi_cust(str[i])!= __LONG_MAX__)
 			{	
 				ft_lstadd_front(&stack_a,ft_lstnew(ft_atoi_cust(str[i])));
-				printf("%ld",stack_a->nbr);
 			}
 		
 			flag = 1;
@@ -39,7 +38,6 @@ int main(int argc, char **argv)
 			return(-1);
 		}
 		// create empty stack_b
-	//	printf("Result of i :%d\n",i);
 		while(i != 0)
 		{
 			ft_lstadd_front(&stack_b,ft_lstnew(0));
