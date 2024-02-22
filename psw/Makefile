@@ -2,7 +2,9 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 
-SRCS = main.c psw_utils.c parser.c
+SRCS = src/main.c src/psw_utils.c src/parser.c \
+       src/psw_utils_1.c src/psw_utils_2.c src/ft_split.c \
+	   src/ft_itoa.c 
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
