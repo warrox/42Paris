@@ -17,7 +17,7 @@ int ft_is_sorted(t_data *data)
 }
 void ft_sort(t_data *data)
 {
-	write(1,"works",5);
+	// if 3, 4, >4
 	if(ft_is_sorted(data) == 1)
 		exit(EXIT_SUCCESS);
 	if(ft_list_lenght(data->stack_a) > 3)

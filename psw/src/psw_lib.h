@@ -15,21 +15,9 @@ typedef struct s_data
 	int flag;
 	int argc;
 	char **argv;
-	int sa;
-	int sb;
-	int ss;
-	int pa;
-	int pb;
-	int ra;
-	int rb;
-	int rr;
-	int rra;
-	int rrb;
-
+	
 	s_list *stack_a;
 	s_list *stack_b;
-	s_list **head;
-	s_list **tail;
 } t_data;
 
 /*******************************************************************/
@@ -73,4 +61,5 @@ int ft_psw_parser(t_data *data);
 void ft_push_a_to_b(t_data *data);
 void ft_sort(t_data *data);
 int ft_is_sorted(t_data *data);
+void ft_ra(t_data *data);
 #endif

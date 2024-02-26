@@ -4,13 +4,11 @@ void ft_push_a_to_b(t_data *data)
 {
     s_list *temp;
 
-    while (ft_list_lenght(data->stack_a) > 3)
+    while (ft_list_lenght(data->stack_a) > 3) // modifier par rappoort au turc algo
     {
-        // Retirer le premier élément de stack_a
         temp = data->stack_a;
         data->stack_a = data->stack_a->next;
 
-        // Ajouter cet élément au début de stack_b
         temp->next = data->stack_b;
         data->stack_b = temp;
     }
@@ -35,26 +33,29 @@ int is_not_null(char *str)
 
 void stack_visualizer(s_list *stack_a,s_list *stack_b)
 {
+	s_list **head_a = &stack_a;
+	// s_list **head_b = &stack_b;
+	(void) stack_b;
 	int flag = 0;
-	while(stack_a)
+	while((*head_a))
 	{
 		if(flag == 0)
 			printf("Stack A\t\n");
 		flag = 1;
-		printf("  |%ld|\t",stack_a->nbr);
+		printf("  |%ld|\t",(*head_a)->nbr);
 		printf("\n");
-		stack_a = stack_a -> next;
+		(*head_a) = (*head_a)->next;
 	}
-	flag = 0;
-	while(stack_b)
-	{
-		if(flag == 0)
-			printf("Stack B\t\n");
-		flag = 1;
-		printf("  |%ld|\t",stack_b->nbr);
-		printf("\n");
-		stack_b = stack_b -> next;
-	}
+	// flag = 0;
+	// while((*head_b)->next)
+	// {
+	// 	if(flag == 0)
+	// 		printf("Stack B\t\n");
+	// 	flag = 1;
+	// 	printf("  |%ld|\t",(*head_b)->nbr);
+	// 	printf("\n");
+	//  	(*head_b) = (*head_b)->next;
+	// }
 }
 int		is_lst_double_nb(s_list *lst)
 {
