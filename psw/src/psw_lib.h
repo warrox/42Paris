@@ -28,6 +28,8 @@ typedef struct s_data
 
 	s_list *stack_a;
 	s_list *stack_b;
+	s_list **head;
+	s_list **tail;
 } t_data;
 
 /*******************************************************************/
@@ -51,7 +53,7 @@ void	ft_lstadd_back(s_list **lst, s_list *new);
 /*                        PRINT  FUNC                 			   */
 /*******************************************************************/
 
-void stack_visualizer(s_list *stack_a, s_list *stack_b);
+void stack_visualizer(s_list *stack_a,s_list *stack_b);
 void display_error(void);
 
 /*******************************************************************/

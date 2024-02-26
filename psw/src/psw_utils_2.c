@@ -1,19 +1,21 @@
 #include "psw_lib.h"
 
-void ft_push_a_to_b(t_data *data) // TO DEBUG You don't modify the list like this.
+void ft_push_a_to_b(t_data *data)
 {
-	t_data *temp;
-	temp = data;
-	temp->i = ft_list_lenght(temp->stack_a);
-	while(temp->i > 3)
-	{
-		temp->stack_a = data->stack_a;
-		temp->stack_b = data->stack_b;
-		
-		temp->i--;
-	}
-	
+    s_list *temp;
+
+    while (ft_list_lenght(data->stack_a) > 3)
+    {
+        // Retirer le premier élément de stack_a
+        temp = data->stack_a;
+        data->stack_a = data->stack_a->next;
+
+        // Ajouter cet élément au début de stack_b
+        temp->next = data->stack_b;
+        data->stack_b = temp;
+    }
 }
+
 
 void display_error(void)
 {
@@ -31,18 +33,26 @@ int is_not_null(char *str)
 	return(0);
 }
 
-void stack_visualizer(s_list *stack_a, s_list *stack_b)
+void stack_visualizer(s_list *stack_a,s_list *stack_b)
 {
 	int flag = 0;
-	while(stack_a && stack_b)
+	while(stack_a)
 	{
 		if(flag == 0)
-			printf("Stack A\t Stack B\n");
+			printf("Stack A\t\n");
 		flag = 1;
 		printf("  |%ld|\t",stack_a->nbr);
-		printf("  |%ld|\t",stack_b->nbr);
 		printf("\n");
 		stack_a = stack_a -> next;
+	}
+	flag = 0;
+	while(stack_b)
+	{
+		if(flag == 0)
+			printf("Stack B\t\n");
+		flag = 1;
+		printf("  |%ld|\t",stack_b->nbr);
+		printf("\n");
 		stack_b = stack_b -> next;
 	}
 }

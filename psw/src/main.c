@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:45:01 by whamdi            #+#    #+#             */
-/*   Updated: 2024/02/21 16:06:33 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/02/26 07:58:16 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main(int argc, char **argv)
 			else
 				data.argv = argv;
 		ft_psw_parser(&data);
-	//	ft_push_a_to_b(&data);
-		stack_visualizer(data.stack_a,data.stack_b);
+		ft_push_a_to_b(&data);
+		stack_visualizer(data.stack_a, data.stack_b);
 	}
 }
 

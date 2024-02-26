@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:45:20 by whamdi            #+#    #+#             */
-/*   Updated: 2024/02/21 15:29:35 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/02/26 07:02:54 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ int ft_psw_parser(t_data *data)
 	{
 		display_error();
 		exit(1);
-	}
-	// create empty stack_b
-	while(data->i != 0)
-	{
-		ft_lstadd_front(&data->stack_b,ft_lstnew(0));
-		data->i--;
 	}
 	return(0);
 }
