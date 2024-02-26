@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -g3
 
 SRCS = src/main.c src/psw_utils.c src/parser.c \
        src/psw_utils_1.c src/psw_utils_2.c src/ft_split.c \
-	   src/ft_itoa.c 
+	   src/ft_itoa.c src/algo_sort.c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
