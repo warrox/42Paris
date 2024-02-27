@@ -58,6 +58,9 @@ void stack_visualizer(s_list *stack_a,s_list *stack_b)
 	  	(*head_b) = (*head_b)->next;
 	 }
 }
+
+//void stack_a_visualizer(s_list *stack_a)
+//void stack_b_visualizer(s_list *stack_b)
 int		is_lst_double_nb(s_list *lst)
 {
 	s_list *temp;
