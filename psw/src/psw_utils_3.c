@@ -15,10 +15,19 @@ void ft_ra(t_data *data) // revoir cette logiaue
 	stack_visualizer(data->stack_a, data->stack_b);
 }
 
-// void ft_rb(t_data *data)
-// {
-	
-// }
+void ft_rb(t_data *data)
+ {
+		s_list *save	= data->stack_b;
+		s_list *head = data->stack_b;
+		s_list *new_head = data->stack_b->next;
+		while (head->next)
+			head = head->next;
+		head->next = save;
+		head->next->next = NULL;
+		data->stack_b = new_head;
+
+		stack_visualizer(data->stack_a,data->stack_b);
+ }
 
 // void ft_rra(t_data *data)
 // {

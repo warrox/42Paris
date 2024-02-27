@@ -1,16 +1,18 @@
 #include "psw_lib.h"
+#include <stdio.h>
 
 void ft_push_a_to_b(t_data *data)
 {
     s_list *temp;
-
-    while (ft_list_lenght(data->stack_a) > 3) // modifier par rappoort au turc algo
+		data->i = ft_list_lenght(data->stack_a);    
+		while (data->i > 3) // modifier par rappoort au turc algo
     {
         temp = data->stack_a;
         data->stack_a = data->stack_a->next;
 
         temp->next = data->stack_b;
         data->stack_b = temp;
+		data->i--;
     }
 }
 
@@ -34,28 +36,27 @@ int is_not_null(char *str)
 void stack_visualizer(s_list *stack_a,s_list *stack_b)
 {
 	s_list **head_a = &stack_a;
-	// s_list **head_b = &stack_b;
-	(void) stack_b;
-	int flag = 0;
+	s_list **head_b = &stack_b;
+	
+	if(head_a == NULL)
+	 	return;
+	
+	printf("Stack A\t\n");
 	while((*head_a))
 	{
-		if(flag == 0)
-			printf("Stack A\t\n");
-		flag = 1;
 		printf("  |%ld|\t",(*head_a)->nbr);
 		printf("\n");
 		(*head_a) = (*head_a)->next;
 	}
-	// flag = 0;
-	// while((*head_b)->next)
-	// {
-	// 	if(flag == 0)
-	// 		printf("Stack B\t\n");
-	// 	flag = 1;
-	// 	printf("  |%ld|\t",(*head_b)->nbr);
-	// 	printf("\n");
-	//  	(*head_b) = (*head_b)->next;
-	// }
+	 if(head_b == NULL)
+	 	return;
+	printf("Stack B\t\n");
+	 while((*head_b))
+	 {
+	 	printf("  |%ld|\t",(*head_b)->nbr);
+	 	printf("\n");
+	  	(*head_b) = (*head_b)->next;
+	 }
 }
 int		is_lst_double_nb(s_list *lst)
 {

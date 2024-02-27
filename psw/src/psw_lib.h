@@ -62,4 +62,5 @@ void ft_push_a_to_b(t_data *data);
 void ft_sort(t_data *data);
 int ft_is_sorted(t_data *data);
 void ft_ra(t_data *data);
+void ft_rb(t_data *data);
 #endif

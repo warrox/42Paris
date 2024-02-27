@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "psw_lib.h"
+#include <stdio.h>
 
 int main(int argc, char **argv)
 {
@@ -26,11 +27,13 @@ int main(int argc, char **argv)
 	{
 		if(data.argc == 2 && is_not_null(argv[1]) == 0)
 				data.argv = ft_split(argv[1], ' ');
-			else
+		else
 				data.argv = argv;
 		ft_psw_parser(&data);
-		//ft_sort(&data);
-		ft_ra(&data);
+		ft_sort(&data);
+		//ft_push_a_to_b(&data);
+		//ft_ra(&data);
+		ft_rb(&data);
 	}
 }
 
