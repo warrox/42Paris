@@ -31,7 +31,6 @@ int main(int argc, char **argv)
 				data.argv = argv;
 		ft_psw_parser(&data);
 		ft_sort(&data);
-		//ft_push_a_to_b(&data);
 		//ft_ra(&data);
 		ft_rb(&data);
 	}
