@@ -33,34 +33,32 @@ int is_not_null(char *str)
 	return(0);
 }
 
-void stack_visualizer(s_list *stack_a,s_list *stack_b)
+void stack_a_visualizer(s_list *stack_a)
 {
-	s_list **head_a = &stack_a;
-	s_list **head_b = &stack_b;
-	
-	if(head_a == NULL)
-	 	return;
-	
-	printf("Stack A\t\n");
-	while((*head_a))
+	s_list *copy;
+	copy = stack_a;
+	if(!copy)
+		return;
+	printf("Stack A\n");
+	while(copy)
 	{
-		printf("  |%ld|\t",(*head_a)->nbr);
-		printf("\n");
-		(*head_a) = (*head_a)->next;
+		printf("|%ld|\n",copy->nbr);
+		copy = copy->next;
 	}
-	 if(head_b == NULL)
-	 	return;
-	printf("Stack B\t\n");
-	 while((*head_b))
-	 {
-	 	printf("  |%ld|\t",(*head_b)->nbr);
-	 	printf("\n");
-	  	(*head_b) = (*head_b)->next;
-	 }
 }
-
-//void stack_a_visualizer(s_list *stack_a)
-//void stack_b_visualizer(s_list *stack_b)
+void stack_b_visualizer(s_list *stack_b)
+{
+	s_list *copy;
+	copy = stack_b;
+	if(!copy)
+		return;
+	printf("Stack B\n");
+	while(copy)
+	{
+		printf("|%ld|\n",copy->nbr);
+		copy = copy->next;
+	}
+}
 int		is_lst_double_nb(s_list *lst)
 {
 	s_list *temp;

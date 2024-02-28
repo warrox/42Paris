@@ -41,9 +41,8 @@ void	ft_lstadd_back(s_list **lst, s_list *new);
 /*                        PRINT  FUNC                 			   */
 /*******************************************************************/
 
-void stack_visualizer(s_list *stack_a,s_list *stack_b);
-//void stack_a_visualizer(s_list *stack_a);
-//void stack_b_visualizer(s_list *stack_b);
+void stack_a_visualizer(s_list *stack_a);
+void stack_b_visualizer(s_list *stack_b);
 void display_error(void);
 
 /*******************************************************************/
