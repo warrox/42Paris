@@ -59,9 +59,17 @@ int ft_psw_parser(t_data *data);
 /*******************************************************************/
 /*                        PUSH FUNC // SORT FUNC            	   */
 /*******************************************************************/
-void ft_push_a_to_b(t_data *data);
+void ft_pb(t_data *data);
+void ft_pa(t_data *data);
 void ft_sort(t_data *data);
 int ft_is_sorted(t_data *data);
 void ft_ra(t_data *data);
 void ft_rb(t_data *data);
+void ft_rra(t_data *data);
+void ft_rrb(t_data *data);
+void ft_sa(t_data *data);
+void ft_sb(t_data *data);
+void ft_ss(t_data *data);
+void ft_rr(t_data *data);
+void ft_rrr(t_data *data);
 #endif

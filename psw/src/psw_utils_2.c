@@ -1,19 +1,32 @@
 #include "psw_lib.h"
 #include <stdio.h>
 
-void ft_push_a_to_b(t_data *data)
+void ft_pb(t_data *data)
 {
-    s_list *temp;
-		data->i = ft_list_lenght(data->stack_a);    
-		while (data->i > 3) // modifier par rappoort au turc algo
-    {
-        temp = data->stack_a;
-        data->stack_a = data->stack_a->next;
+	if(!data->stack_a)
+		return;
+    s_list *first_a = NULL;
+	if(data && data->stack_a)
+	{
+		first_a = data->stack_a;
+		data->stack_a = data->stack_a->next;
+		first_a->next = NULL;
+		ft_lstadd_front(&data->stack_b,first_a);
+	}
+}
 
-        temp->next = data->stack_b;
-        data->stack_b = temp;
-		data->i--;
-    }
+void ft_pa(t_data *data)
+{
+    if(!data->stack_b)
+		return;
+	s_list *first_b = NULL;
+	if(data && data->stack_b)
+	{
+		first_b = data->stack_b;
+		data->stack_b = data->stack_b->next;
+		first_b->next = NULL;
+		ft_lstadd_front(&data->stack_a,first_b);
+	}
 }
 
 

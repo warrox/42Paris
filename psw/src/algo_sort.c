@@ -21,5 +21,5 @@ void ft_sort(t_data *data)
 	if(ft_is_sorted(data) == 1)
 		exit(EXIT_SUCCESS);
 	if(ft_list_lenght(data->stack_a) > 3)
-		ft_push_a_to_b(data);
+		ft_pb(data);
 }
