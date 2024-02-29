@@ -14,6 +14,7 @@ typedef struct s_data
 	int i;
 	int flag;
 	int argc;
+	int counter;
 	char **argv;
 	
 	s_list *stack_a;
@@ -44,6 +45,7 @@ void	ft_lstadd_back(s_list **lst, s_list *new);
 void stack_a_visualizer(s_list *stack_a);
 void stack_b_visualizer(s_list *stack_b);
 void display_error(void);
+void counter_print(t_data *data);
 
 /*******************************************************************/
 /*                        HANDLE ERROR FUNC               		   */

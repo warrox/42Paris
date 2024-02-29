@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 	t_data data;
 	data.argv = argv;
 	data.i = -1;
+	data.counter = 0;
 	data.flag = 0;
 	data.argc = argc;
 	data.stack_a = NULL;
@@ -36,6 +37,7 @@ int main(int argc, char **argv)
 		stack_b_visualizer(data.stack_b);
 		//ft_ra(&data);
 		//ft_rb(&data);
+		counter_print(&data);
 	}
 }
 

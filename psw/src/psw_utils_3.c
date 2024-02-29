@@ -1,4 +1,5 @@
 #include "psw_lib.h"
+#include <stdio.h>
 
 void ft_ra(t_data *data) // revoir cette logiaue
 {
@@ -96,6 +97,11 @@ void ft_rrr(t_data *data)
 {
 	ft_rra(data);
 	ft_rrb(data);
+}
+
+void counter_print(t_data *data)
+{
+	printf("\nNumber of operation(s) : O(%d)\n",data->counter);
 }
 
 
