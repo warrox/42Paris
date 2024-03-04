@@ -18,24 +18,34 @@ int ft_is_sorted(t_data *data)
 }
 void ft_sort_3(t_data *data)
 {
-	if(data->stack_a->nbr > data->stack_a->next->nbr && 
+	
+	while(ft_is_sorted(data) != 1)
+	{
+		if(data->stack_a->nbr > data->stack_a->next->nbr && 
 		data->stack_a->nbr > data->stack_a->next->next->nbr)
 		{
 			ft_ra(data);
 			data->counter++;
 		}
-	else if (data->stack_a->nbr < data->stack_a->next->nbr && 
-	data->stack_a->nbr > data->stack_a->next->next->nbr)
-	{
-		ft_rra(data);
-		data->counter++;
-	}
+		else if (data->stack_a->nbr < data->stack_a->next->nbr && 
+		data->stack_a->nbr > data->stack_a->next->next->nbr)
+		{
+			ft_rra(data);
+			data->counter++;
+		}
 
 		if(data->stack_a->nbr > data->stack_a->next->nbr)
 		{
 			ft_sa(data);
 			data->counter++;
 		}
+		if(data->stack_a->next->nbr > data->stack_a->next->next->nbr)
+		{
+			ft_rra(data);
+			data->counter++;
+		}
+	}
+	
 }
 void	ft_sort_2(t_data *data)
 {
