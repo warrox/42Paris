@@ -5,7 +5,7 @@ void ft_pb(t_data *data)
 {
 	if(!data->stack_a)
 		return;
-    s_list *first_a = NULL;
+    t_list *first_a = NULL;
 	if(data && data->stack_a)
 	{
 		first_a = data->stack_a;
@@ -19,7 +19,7 @@ void ft_pa(t_data *data)
 {
     if(!data->stack_b)
 		return;
-	s_list *first_b = NULL;
+	t_list *first_b = NULL;
 	if(data && data->stack_b)
 	{
 		first_b = data->stack_b;
@@ -46,9 +46,9 @@ int is_not_null(char *str)
 	return(0);
 }
 
-void stack_a_visualizer(s_list *stack_a)
+void stack_a_visualizer(t_list *stack_a)
 {
-	s_list *copy;
+	t_list *copy;
 	copy = stack_a;
 	if(!copy)
 		return;
@@ -59,9 +59,9 @@ void stack_a_visualizer(s_list *stack_a)
 		copy = copy->next;
 	}
 }
-void stack_b_visualizer(s_list *stack_b)
+void stack_b_visualizer(t_list *stack_b)
 {
-	s_list *copy;
+	t_list *copy;
 	copy = stack_b;
 	if(!copy)
 		return;
@@ -72,10 +72,10 @@ void stack_b_visualizer(s_list *stack_b)
 		copy = copy->next;
 	}
 }
-int		is_lst_double_nb(s_list *lst)
+int		is_lst_double_nb(t_list *lst)
 {
-	s_list *temp;
-	s_list *current;
+	t_list *temp;
+	t_list *current;
 	current = lst;
 	int check_nbr;
 	while(current->next)

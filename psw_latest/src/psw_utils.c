@@ -13,17 +13,17 @@
 
 #include "psw_lib.h"
 
-s_list	*ft_lstnew(long nb)
+t_list	*ft_lstnew(long nb)
 {
-	s_list	*new;
-	new = (s_list *)malloc(sizeof(s_list));
+	t_list	*new;
+	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
 	new->nbr = nb;
 	new->next = NULL;
 	return (new);
 }
-void	ft_lstadd_front(s_list **lst, s_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (new && lst)
 	{
@@ -31,9 +31,9 @@ void	ft_lstadd_front(s_list **lst, s_list *new)
 		*lst = new;
 	}
 }
-s_list	*ft_lstlast(s_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-	s_list	*current;
+	t_list	*current;
 
 	if (!lst)
 		return (NULL);
@@ -44,9 +44,9 @@ s_list	*ft_lstlast(s_list *lst)
 	}
 	return (current);
 }
-void	ft_lstadd_back(s_list **lst, s_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	s_list	*tmp;
+	t_list	*tmp;
 
 	if (lst && new)
 	{
@@ -59,10 +59,10 @@ void	ft_lstadd_back(s_list **lst, s_list *new)
 		}
 	}
 }
-int ft_list_lenght(s_list *lst)
+int ft_list_lenght(t_list *lst)
 {
 	int i;
-	s_list *temp;
+	t_list *temp;
 	temp = lst;
 	i = 0;
 	while(temp->next != NULL)

@@ -1,95 +1,12 @@
 #include "psw_lib.h"
 #include <stdio.h>
 
-int ft_is_sorted(t_data *data)
-{
-	s_list *temp;
-	s_list *current;
-	current = data->stack_a;
-	temp = data->stack_a->next;
-	while(current && temp)
-	{
-		if(current->nbr > temp->nbr)
-			return(0);
-		temp = temp->next;
-		current = current->next;
-	}
-	return(1);
-}
-void ft_sort_3(t_data *data)
-{
-	
-	while(ft_is_sorted(data) != 1)
-	{
-		if(data->stack_a->nbr > data->stack_a->next->nbr && 
-		data->stack_a->nbr > data->stack_a->next->next->nbr)
-		{
-			ft_ra(data);
-			data->counter++;
-		}
-		else if (data->stack_a->nbr < data->stack_a->next->nbr && 
-		data->stack_a->nbr > data->stack_a->next->next->nbr)
-		{
-			ft_rra(data);
-			data->counter++;
-		}
 
-		if(data->stack_a->nbr > data->stack_a->next->nbr)
-		{
-			ft_sa(data);
-			data->counter++;
-		}
-		if(data->stack_a->next->nbr > data->stack_a->next->next->nbr)
-		{
-			ft_rra(data);
-			data->counter++;
-		}
-	}
-	
-}
-void	ft_sort_2(t_data *data)
-{
-	if(data->stack_a->nbr > data->stack_a->next->nbr)
-	{
-		ft_sa(data);
-		data->counter++;
-	}
-}
-void	ft_sort_4(t_data *data) // do not work with 1 4 3 2 // maj : ca va pas te servir
-{
-	// mi
-	
-	while(ft_is_sorted(data)!= 1) // not working
-	{
-		if(data->stack_a->nbr > data->stack_a->next->nbr)
-		{
-			ft_ra(data);
-			data->counter++;
-		}
-		else if(data->stack_a->nbr < data->stack_a->next->nbr &&
-		data->stack_a->nbr < data->stack_a->next->next->nbr)
-		{
-			ft_ra(data);
-			data->counter++;
-		}
-		if(data->stack_a->nbr > data->stack_a->next->nbr)
-		{
-			ft_sa(data);
-			data->counter++;
-		}
-		if(data->counter == 4)
-		{
-			ft_ra(data);
-			data->counter++;
-		}
-		printf("DATA COUNTER : %d\n",data->counter);
-	}
-}
-int higher_nbr(s_list *stack_b)
+int higher_nbr(t_list *stack_b)
 {
 	int higher;
 	higher = 0;
-	s_list *temp = stack_b;
+	t_list *temp = stack_b;
 	while(temp->next)
 	{
 		if(higher < temp->nbr)
@@ -98,11 +15,11 @@ int higher_nbr(s_list *stack_b)
 	}
 	return(higher);
 }
-int lower_nbr(s_list *stack_b)
+int lower_nbr(t_list *stack_b)
 {
 	int lower;
 	lower = 0;
-	s_list *temp = stack_b;
+	t_list *temp = stack_b;
 	while(temp->next)
 	{
 		if(lower < temp->nbr)
@@ -111,7 +28,7 @@ int lower_nbr(s_list *stack_b)
 	}
 	return(lower);
 }
-int is_max_or_min(s_list *stack_a, s_list *stack_b)
+int is_max_or_min(t_list *stack_a, t_list *stack_b)
 {
 	
 	if(stack_a->nbr < lower_nbr(stack_b))
@@ -121,48 +38,64 @@ int is_max_or_min(s_list *stack_a, s_list *stack_b)
 
 	return(0);
 }
+
+int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b,int i)
+{
+	// ici tu check toutes les conditions et tu renvoies le lowest cost
+	t_list *tail_b;
+	t_list *temp_a;
+	t_list *temp_b;
+	int index;
+
+	temp_b = stack_b;
+	temp_a = stack_a;
+	tail_b = stack_b;
+
+	while(tail_b->next)
+		tail_b = tail_b->next;
+	if(is_max_or_min(temp_a, temp_b)== 2 && temp_a->nbr > tail_b->nbr)
+	{
+		//rrb
+		//pb
+		return(2);
+	}
+	if(is_max_or_min(temp_a, temp_b)== 2 && temp_a->nbr < tail_b->nbr)
+	{
+		//rrr
+		//pb
+		return(2);
+	}
+	// calcul du cout rr en fonction de l'index dans a et b. 
+	
+}
+
 //Check wich element in stack a are costless and return the index of this element
 int	ft_cost(t_data *data)
 {
-	s_list *temp = data->stack_a;
+	t_list *temp = data->stack_a;
+	t_list *stack_b;
 	int counter_cur;
 	int counter_next;
 
-	int index_next;
-	s_list *stack_b;
-	index_next = 0;
 	counter_cur = 0;
 	counter_next = 0;
 	stack_b = data->stack_b;
 	data->i = 0;
-	while(stack_b->next)
-		stack_b = stack_b->next;
-
-	if(temp->nbr < data->stack_b->nbr && temp->nbr < stack_b->nbr)
-	{
-		counter_cur++;
-		temp = temp->next;
-	}
-
-	// foret de if avec toutes les conditions
+	
+	// ici faire une fonction qui renvoie le less cost de tous les next de b
+	counter_cur = ft_lowest_cost_sa(temp,stack_b,data->i);
+	temp = temp->next;
 	while(temp->next)
 	{
-		if(temp->nbr < data->stack_b->nbr && temp->nbr < stack_b->nbr)
-		{
-			counter_next++;
-			temp = temp->next;
-		}
-		// foret de if avec toutes les conditions
-		if(counter_cur < counter_next)
-			return(data->i);
-		else
+		counter_next = ft_lowest_cost_sa(temp,stack_b,data->i);
+		if(counter_cur > counter_next && (counter_next - data->i) < counter_cur)
 		{
 			counter_cur = counter_next;
-			counter_next = 0;
+			data->i++;
 		}
-		counter_next++;
+		temp = temp->next;
 	}
-	return(counter_next);
+	return(data->i);
 }
 
 void ft_doner(t_data *data)
