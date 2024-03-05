@@ -59,7 +59,7 @@ int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b,int i)
 		//pb
 		return(2);
 	}
-	if(is_max_or_min(temp_a, temp_b)== 2 && temp_a->nbr < tail_b->nbr)
+	if(is_max_or_min(temp_a, temp_b)== 1 && temp_a->nbr < tail_b->nbr)
 	{
 		//rrr
 		//pb
