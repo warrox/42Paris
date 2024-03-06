@@ -49,7 +49,7 @@ int is_max_or_min(t_list *stack_a, t_list *stack_b)
 	return(0);
 }
 
-int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b)
+int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b, int i)
 {
 	// ici tu check toutes les conditions et tu renvoies le lowest cost
 	t_list *temp_a;
@@ -62,19 +62,26 @@ int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b)
 
 	if(is_max_or_min(temp_a, temp_b)== 2)
 	{
-		if(ft_cost_mediane_a(temp_a))
-		while(temp_b->next != NULL)
+		if(ft_cost_mediane_a(temp_a,i) == 2)
 		{
-			// ft_mediane_b + ft_mediane_a
-			temp_b = temp_b->next;
+			while(temp_b->next != NULL)
+			{
+				cost++;
+				temp_b = temp_b->next;
+			}
+
 		}
 	}
 	if(is_max_or_min(temp_a, temp_b)== 1)
 	{
-		while(temp_b->next != NULL && temp_a->nbr > temp_b->nbr)
+		if(ft_cost_mediane_a(temp_a,i) == 1)
 		{
-			cost++;
-			temp_b = temp_b->next;
+			while(i)
+			{
+				cost++;
+				i--;
+			}
+
 		}
 	}
 	if(is_max_or_min(temp_a,temp_b) == 0)
@@ -101,13 +108,13 @@ int	ft_cost(t_data *data)
 	stack_b = data->stack_b;
 	data->i = 0;
 	// ici faire une fonction qui renvoie le less cost de tous les next de b
-	counter_cur = ft_lowest_cost_sa(temp,stack_b);
+	counter_cur = ft_lowest_cost_sa(temp,stack_b,data->i);
 	temp = temp->next;
 	while(temp->next != NULL)
 	{
 		stack_a_visualizer(temp);
-		counter_next = ft_lowest_cost_sa(temp,stack_b);
-		if(counter_cur > counter_next && (counter_next - data->i) < counter_cur) // redondant ?
+		counter_next = ft_lowest_cost_sa(temp,stack_b,data->i);
+		if(counter_cur > counter_next)
 		{
 			counter_cur = counter_next;
 			data->i++;
