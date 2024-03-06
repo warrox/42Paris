@@ -45,26 +45,40 @@ int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b,int i)
 	t_list *tail_b;
 	t_list *temp_a;
 	t_list *temp_b;
-	int index;
+	int cost;
 
 	temp_b = stack_b;
 	temp_a = stack_a;
 	tail_b = stack_b;
-
+	cost = 0;
 	while(tail_b->next)
 		tail_b = tail_b->next;
-	if(is_max_or_min(temp_a, temp_b)== 2 && temp_a->nbr > tail_b->nbr)
+	if(is_max_or_min(temp_a, temp_b)== 2 && temp_a->nbr > tail_b->nbr) // check tail
 	{
-		//rrb
-		//pb
-		return(2);
+		while(temp_a->nbr > temp_b->nbr)
+		{
+			cost++;
+			temp_b = temp_b->next;
+		}
 	}
-	if(is_max_or_min(temp_a, temp_b)== 1 && temp_a->nbr < tail_b->nbr)
+	if(is_max_or_min(temp_a, temp_b)== 1 && temp_a->nbr < tail_b->nbr) // check tail
 	{
-		//rrr
-		//pb
-		return(2);
+		while(temp_a->nbr > temp_b->nbr)
+		{
+			cost++;
+			temp_b = temp_b->next;
+		}
 	}
+	if(is_max_or_min(temp_a,temp_b) == 0)
+	{
+		while(temp_a->nbr > temp_b->nbr)
+		{
+			cost++;
+			temp_b = temp_b->next;
+		}
+	}
+	return(cost);
+
 	// calcul du cout rr en fonction de l'index dans a et b. 
 	
 }
@@ -88,7 +102,7 @@ int	ft_cost(t_data *data)
 	while(temp->next)
 	{
 		counter_next = ft_lowest_cost_sa(temp,stack_b,data->i);
-		if(counter_cur > counter_next && (counter_next - data->i) < counter_cur)
+		if(counter_cur > counter_next && (counter_next - data->i) < counter_cur) // redondant ?
 		{
 			counter_cur = counter_next;
 			data->i++;
@@ -100,35 +114,25 @@ int	ft_cost(t_data *data)
 
 void ft_doner(t_data *data)
 {
+	int index;
+	t_list *temp;
+	temp = data->stack_a;
+	index = 0;
 	data->counter = 0;
 	ft_pb(data);
 	ft_pb(data);
-	while(data->stack_a)
+	while(data->stack_a->next)
 	{
-		// count lowest cost for an element in stack_a
-		data->counter = ft_cost(data); //element qui coute le moins a placer dans stack B
-		if(is_max_or_min(data->stack_a, data->stack_b)== 1)
+		index = ft_cost(data); //element qui coute le moins a placer dans stack B
+		while(index) // place le pointeur sur element a push 
 		{
-			if(data->stack_a->nbr < data->stack_b->nbr) // si element < au top de stack b tu push + tu rb pour placer l'element en dernier.
-			{
-				ft_pb(data); 
-				ft_rb(data);
-			}
+			temp = temp->next;
+			index--;
 		}
-		else if(is_max_or_min(data->stack_a, data->stack_b)== 2)
-		{
-			// higher
-		}
-		else
-		{
-			// is middle
-		}
-		data->stack_a = data->stack_a->next;
-		// func to do 2
-		// 2 :determinate if the current element to push is <min or >max or a middle numbers
+		// ft_merguez() execute le push avec les instructions donner.
+		data->stack_a = data->stack_a->next; // check si ca casse pas ta chaine
 	}
-	//3 : puis calcul du cout pour chaque element
-	//4 : Push
+	// second part push tout vers A 
 }
 
 
