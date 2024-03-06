@@ -39,31 +39,31 @@ int is_max_or_min(t_list *stack_a, t_list *stack_b)
 	return(0);
 }
 
-int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b,int i)
+int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b)
 {
 	// ici tu check toutes les conditions et tu renvoies le lowest cost
-	t_list *tail_b;
 	t_list *temp_a;
 	t_list *temp_b;
 	int cost;
+	cost = 0;
 
 	temp_b = stack_b;
 	temp_a = stack_a;
-	tail_b = stack_b;
-	cost = 0;
-	while(tail_b->next)
-		tail_b = tail_b->next;
-	if(is_max_or_min(temp_a, temp_b)== 2 && temp_a->nbr > tail_b->nbr) // check tail
+
+	stack_a_visualizer(temp_a);
+	stack_b_visualizer(temp_b);
+	if(is_max_or_min(temp_a, temp_b)== 2)
 	{
-		while(temp_a->nbr > temp_b->nbr)
+		while(temp_b->next != NULL && temp_b->nbr < temp_b->next->nbr)
 		{
+			ft_printf("cout :%d",cost);
 			cost++;
 			temp_b = temp_b->next;
 		}
 	}
-	if(is_max_or_min(temp_a, temp_b)== 1 && temp_a->nbr < tail_b->nbr) // check tail
+	if(is_max_or_min(temp_a, temp_b)== 1 )
 	{
-		while(temp_a->nbr > temp_b->nbr)
+		while(temp_b->next != NULL && temp_a->nbr > temp_b->nbr)
 		{
 			cost++;
 			temp_b = temp_b->next;
@@ -71,7 +71,7 @@ int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b,int i)
 	}
 	if(is_max_or_min(temp_a,temp_b) == 0)
 	{
-		while(temp_a->nbr > temp_b->nbr)
+		while(temp_b->next != NULL && temp_a->nbr > temp_b->nbr)
 		{
 			cost++;
 			temp_b = temp_b->next;
@@ -95,13 +95,13 @@ int	ft_cost(t_data *data)
 	counter_next = 0;
 	stack_b = data->stack_b;
 	data->i = 0;
-	
 	// ici faire une fonction qui renvoie le less cost de tous les next de b
-	counter_cur = ft_lowest_cost_sa(temp,stack_b,data->i);
+	counter_cur = ft_lowest_cost_sa(temp,stack_b);
 	temp = temp->next;
-	while(temp->next)
+	while(temp->next != NULL)
 	{
-		counter_next = ft_lowest_cost_sa(temp,stack_b,data->i);
+		stack_a_visualizer(temp);
+		counter_next = ft_lowest_cost_sa(temp,stack_b);
 		if(counter_cur > counter_next && (counter_next - data->i) < counter_cur) // redondant ?
 		{
 			counter_cur = counter_next;
