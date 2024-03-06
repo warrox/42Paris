@@ -1,7 +1,17 @@
 #include "psw_lib.h"
 #include <stdio.h>
 
-
+int ft_cost_mediane_a(t_list *stack, int i)
+{
+	int length;
+	
+	length = 0;
+	length = ft_list_lenght(stack);
+	if(length / 2 < i)
+		return(2); // rr
+	else
+		return(1); // r
+}
 int higher_nbr(t_list *stack_b)
 {
 	int higher;
@@ -50,18 +60,16 @@ int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b)
 	temp_b = stack_b;
 	temp_a = stack_a;
 
-	stack_a_visualizer(temp_a);
-	stack_b_visualizer(temp_b);
 	if(is_max_or_min(temp_a, temp_b)== 2)
 	{
-		while(temp_b->next != NULL && temp_b->nbr < temp_b->next->nbr)
+		if(ft_cost_mediane_a(temp_a))
+		while(temp_b->next != NULL)
 		{
-			ft_printf("cout :%d",cost);
-			cost++;
+			// ft_mediane_b + ft_mediane_a
 			temp_b = temp_b->next;
 		}
 	}
-	if(is_max_or_min(temp_a, temp_b)== 1 )
+	if(is_max_or_min(temp_a, temp_b)== 1)
 	{
 		while(temp_b->next != NULL && temp_a->nbr > temp_b->nbr)
 		{
@@ -78,9 +86,6 @@ int ft_lowest_cost_sa(t_list *stack_a, t_list *stack_b)
 		}
 	}
 	return(cost);
-
-	// calcul du cout rr en fonction de l'index dans a et b. 
-	
 }
 
 //Check wich element in stack a are costless and return the index of this element
