@@ -13,6 +13,7 @@ void ft_pb(t_data *data)
 		first_a->next = NULL;
 		ft_lstadd_front(&data->stack_b,first_a);
 	}
+	ft_printf("pb\n");
 }
 
 void ft_pa(t_data *data)

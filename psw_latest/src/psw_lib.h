@@ -2,7 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <limits.h>
 #include "../Printf/ft_printf.h"
+
+# define UP 1
+# define DOWN 2
 
 typedef struct s_list
 {
@@ -17,6 +21,12 @@ typedef struct s_data
 	int argc;
 	int counter;
 	char **argv;
+	int cost_a[2];
+	int cost_b[2];
+	int index_b;
+	int final_cost;
+	int f_cost_a[2];
+	int f_cost_b[2];
 	
 	t_list *stack_a;
 	t_list *stack_b;
@@ -69,6 +79,7 @@ int ft_is_sorted(t_data *data);
 void ft_sort_3(t_data *data);
 void	ft_sort_2(t_data *data);
 int ft_is_sorted(t_data *data);
+void ft_cost_mediane(t_list *stack, int i, int *cost);
 void ft_ra(t_data *data);
 void ft_rb(t_data *data);
 void ft_rra(t_data *data);
