@@ -5,15 +5,17 @@
 void ft_cost_mediane(t_list *stack, int i, int *cost) // not working
 {
 	int med;
+	int len;
 
-
-	med = ft_list_lenght(stack) / 2;
+	len = ft_list_lenght(stack);
+	med = len / 2;
 	if (i > med)
 	{
 		// ft_printf("--------\n");
 		// ft_printf("%d*valeur de i : %d\n",stack->nbr, i);
-		// ft_printf("valeur de med : %d\n", med);
-		cost[0] = med - (i - med);
+		// ft_printf("len = %d\n", ft_list_lenght(stack));
+		// ft_printf("valeur de d_bottom %d\n", ft_list_lenght(stack) - i);
+		cost[0] = len - i; 
 		cost[1] = DOWN;
 	}
 	else
@@ -191,10 +193,9 @@ int	ft_cost(t_data *data)
 	while(temp_a != NULL)
 	{
 		counter_cur = ft_lowest_cost_sa(data,temp_a);
-		ft_printf("counter_cur : %d\n", counter_cur);
-		ft_printf("Final_cost : %d\n", data->final_cost);
 		if(data->final_cost == 0)
 			return(0);
+			// ft_printf("valeur de i : %d\n",data->i);
 		if (counter_cur < data->final_cost)
 		{
 			data->final_cost = counter_cur;
@@ -202,15 +203,11 @@ int	ft_cost(t_data *data)
 			data->f_cost_a[1] = data->cost_a[1];
 			data->f_cost_b[0] = data->cost_b[0];
 			data->f_cost_b[1] = data->cost_b[1];
-			//ft_printf("Finalcost for element : %d\n",data->final_cost);
 			cur_lowest = data->i;
 		}
 		data->i++;
 		temp_a = temp_a->next;
-	}
-	
-	  if(data->stack_a->nbr == 8)
-	 	exit(1);	
+	}	
 	return(cur_lowest);
 }
 void ft_action(t_data *data) // recupere mes instructions de a et b 
@@ -221,59 +218,60 @@ void ft_action(t_data *data) // recupere mes instructions de a et b
 		ft_pb(data);
 		return;
 	}
-	if(data->final_cost == 1)
+	if(data->f_cost_a[1] == 1 && data->f_cost_b[1] == 1)
 	{
-		if(data->cost_b[1] == 1)
+		while(data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
 		{
-			while(data->cost_b[0])
-			{
-				ft_rb(data);
-				data->cost_b[0]--;
-			}
-		}
-		return;
-	}
-	// TO CHECK
-	if(data->cost_a[1] == 1)
-	{
-		while(data->cost_a[0])
-		{
-			ft_printf("cost_a[0] : %d\n",data->cost_a[0]);
-			ft_ra(data);
-			data->cost_a[0]--;
-		}
-	}
-	else if(data->cost_a[1] == 1 && data->cost_a[1] == data->cost_b[1])
-	{
-		while(data->cost_a[0])
-		{
-			ft_printf("cost_a[0] : %d\n",data->cost_a[0]);
 			ft_rr(data);
-			data->cost_a[0]--;
+			data->f_cost_a[0]--;
+			data->f_cost_b[0]--;
 		}
 	}
-			
-	if(data->cost_a[1] == 2)
+	if(data->f_cost_a[1] == 1)
 	{
-		while(data->cost_a[0])
+		while(data->f_cost_a[0] > 0)
 		{
-			ft_printf("cost_a[0] : %d\n",data->cost_a[0]);
-			ft_rra(data);
-			data->cost_a[0]--;
+			ft_ra(data);
+			data->f_cost_a[0]--;
 		}
 	}
-	else if(data->cost_a[1] == 2 && data->cost_a[1] == data->cost_b[1])
+	if(data->f_cost_b[1] == 1)
 	{
-		while(data->cost_a[0])
+		while(data->f_cost_b[0] > 0)
 		{
-			ft_printf("cost_a[0] : %d\n",data->cost_a[0]);
+			ft_rb(data);
+			data->f_cost_b[0]--;
+		}
+	}
+	
+	if(data->f_cost_a[1] == 2 && data->f_cost_b[1] == 2)
+	{
+		while(data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
+		{
 			ft_rrr(data);
-			data->cost_a[0]--;
+			data->f_cost_a[0]--;
+			data->f_cost_b[0]--;
 		}
 	}
-		data->final_cost--;
-		
+	if(data->f_cost_a[1] == 2)
+	{
+		while(data->f_cost_a[0] > 0)
+		{
+			ft_rra(data);
+			data->f_cost_a[0]--;
+		}
+	}
+	if(data->f_cost_b[1] == 2)
+	{
+		while(data->f_cost_b[0] > 0)
+		{
+			ft_rrb(data);
+			data->f_cost_b[0]--;
+		}
+	}
+	ft_pb(data);
 }
+
 void ft_doner(t_data *data)
 {
 	ft_pb(data);
@@ -281,8 +279,8 @@ void ft_doner(t_data *data)
 	while(ft_list_lenght(data->stack_a) > 3)
 	{
 		ft_action(data);
-		//ft_pb(data);
-		stack_b_visualizer(data->stack_b);
+		// if(data->stack_b->nbr == 3)
+	 	// 	exit(1);
 	}
 	if(ft_list_lenght(data->stack_a)== 3)
 		ft_sort_3(data);
