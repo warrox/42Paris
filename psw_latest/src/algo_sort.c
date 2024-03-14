@@ -11,18 +11,11 @@ void ft_cost_mediane(t_list *stack, int i, int *cost) // not working
 	med = len / 2;
 	if (i > med)
 	{
-		// ft_printf("--------\n");
-		// ft_printf("%d*valeur de i : %d\n",stack->nbr, i);
-		// ft_printf("len = %d\n", ft_list_lenght(stack));
-		// ft_printf("valeur de d_bottom %d\n", ft_list_lenght(stack) - i);
 		cost[0] = len - i; 
 		cost[1] = DOWN;
 	}
 	else
 	{
-		// ft_printf("%d*valeur de i : %d\n",stack->nbr, i);
-		// ft_printf("valeur de med : %d\n", med);
-		// ft_printf("--------\n");
 		cost[0] = i;
 		cost[1] = UP;
 	}
@@ -58,14 +51,9 @@ int is_max_or_min(t_list *stack_a, t_list *stack_b)
 {
 	
 	if(stack_a->nbr < lower_nbr(stack_b))
-	{
 		return(1);
-	}
-	// printf("stack_a->nbr = %ld, highest = %d\n", stack_a->nbr, higher_nbr(stack_b));
 	if(stack_a->nbr > higher_nbr(stack_b))
-	{
 		return(2);
-	}
 	return(0);
 }
 
@@ -144,11 +132,17 @@ int index_higher_nbr(t_list *stack_b)
 int ft_simplify_cost(t_data *data)
 {
 	int cost;
+	int tmp_costa;
+	int tmp_costb;
+
 	cost = data->cost_a[0] + data->cost_b[0];
-	
-	if(data->cost_a[1] == data->cost_b[1] && data->cost_a[0] > 0)
+	tmp_costa = data->cost_a[0];
+	tmp_costb = data->cost_b[0];
+	while(data->cost_a[1] == data->cost_b[1] && (tmp_costa > 0 && tmp_costb > 0))
 	{
 		cost -=1;
+		tmp_costa -=1;
+		tmp_costb -=1;
 	}
 	return(cost);
 }
@@ -172,30 +166,34 @@ int ft_lowest_cost_sa(t_data *data,t_list *stack)
 	{
 		ft_cost_mediane(data->stack_a, data->i, data->cost_a);
 		data->index_b = index_middle_nbr(data);
+		ft_printf("Index b : %d\n",data->index_b);
 		ft_cost_mediane(data->stack_b, data->index_b, data->cost_b);
+		ft_printf("--------\n");
 	}
 	cost =  ft_simplify_cost(data);
 	return(cost);
 }
-
-//Check wich element in stack a are costless and return the index of this element
-int	ft_cost(t_data *data)
+void ft_data_cost_init(t_data *data)
 {
-	t_list *temp_a = data->stack_a;
-	int counter_cur = 0;
-	int cur_lowest = INT_MAX;
 	data->final_cost = INT_MAX;
 	data->f_cost_a[0] = INT_MAX;
 	data->f_cost_a[1] = INT_MAX;
 	data->f_cost_b[0] = INT_MAX;
 	data->f_cost_b[1] = INT_MAX;
 	data->i = 0;
+}
+//Check wich element in stack a are costless and return the index of this element
+int	ft_cost(t_data *data)
+{
+	t_list *temp_a = data->stack_a;
+	int counter_cur = 0;
+	int cur_lowest = INT_MAX;
+	ft_data_cost_init(data);
 	while(temp_a != NULL)
 	{
 		counter_cur = ft_lowest_cost_sa(data,temp_a);
 		if(data->final_cost == 0)
 			return(0);
-			// ft_printf("valeur de i : %d\n",data->i);
 		if (counter_cur < data->final_cost)
 		{
 			data->final_cost = counter_cur;
@@ -207,7 +205,7 @@ int	ft_cost(t_data *data)
 		}
 		data->i++;
 		temp_a = temp_a->next;
-	}	
+	}
 	return(cur_lowest);
 }
 void ft_action(t_data *data) // recupere mes instructions de a et b 
@@ -218,7 +216,7 @@ void ft_action(t_data *data) // recupere mes instructions de a et b
 		ft_pb(data);
 		return;
 	}
-	if(data->f_cost_a[1] == 1 && data->f_cost_b[1] == 1)
+	if(data->f_cost_a[1] == UP && data->f_cost_b[1] == UP)
 	{
 		while(data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
 		{
@@ -227,7 +225,7 @@ void ft_action(t_data *data) // recupere mes instructions de a et b
 			data->f_cost_b[0]--;
 		}
 	}
-	if(data->f_cost_a[1] == 1)
+	if(data->f_cost_a[1] == UP)
 	{
 		while(data->f_cost_a[0] > 0)
 		{
@@ -235,7 +233,7 @@ void ft_action(t_data *data) // recupere mes instructions de a et b
 			data->f_cost_a[0]--;
 		}
 	}
-	if(data->f_cost_b[1] == 1)
+	if(data->f_cost_b[1] == UP)
 	{
 		while(data->f_cost_b[0] > 0)
 		{
@@ -244,7 +242,7 @@ void ft_action(t_data *data) // recupere mes instructions de a et b
 		}
 	}
 	
-	if(data->f_cost_a[1] == 2 && data->f_cost_b[1] == 2)
+	if(data->f_cost_a[1] == DOWN && data->f_cost_b[1] == DOWN)
 	{
 		while(data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
 		{
@@ -253,7 +251,7 @@ void ft_action(t_data *data) // recupere mes instructions de a et b
 			data->f_cost_b[0]--;
 		}
 	}
-	if(data->f_cost_a[1] == 2)
+	if(data->f_cost_a[1] == DOWN)
 	{
 		while(data->f_cost_a[0] > 0)
 		{
@@ -261,7 +259,7 @@ void ft_action(t_data *data) // recupere mes instructions de a et b
 			data->f_cost_a[0]--;
 		}
 	}
-	if(data->f_cost_b[1] == 2)
+	if(data->f_cost_b[1] == DOWN)
 	{
 		while(data->f_cost_b[0] > 0)
 		{
@@ -279,6 +277,8 @@ void ft_doner(t_data *data)
 	while(ft_list_lenght(data->stack_a) > 3)
 	{
 		ft_action(data);
+		stack_a_visualizer(data->stack_a);
+		stack_b_visualizer(data->stack_b);
 		// if(data->stack_b->nbr == 3)
 	 	// 	exit(1);
 	}
