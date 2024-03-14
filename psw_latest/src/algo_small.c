@@ -1,34 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_small.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/14 11:25:23 by whamdi            #+#    #+#             */
+/*   Updated: 2024/03/14 15:03:29 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "psw_lib.h"
 void ft_sort_3(t_data *data)
 {
-	
-	while(ft_is_sorted(data) != 1)
+	if(data->stack_a->nbr > data->stack_a->next->nbr && 
+	data->stack_a->nbr > data->stack_a->next->next->nbr)
 	{
-		if(data->stack_a->nbr > data->stack_a->next->nbr && 
-		data->stack_a->nbr > data->stack_a->next->next->nbr)
-		{
-			ft_ra(data);
-			data->counter++;
-		}
-		else if (data->stack_a->nbr < data->stack_a->next->nbr && 
-		data->stack_a->nbr > data->stack_a->next->next->nbr)
-		{
-			ft_rra(data);
-			data->counter++;
-		}
-
-		if(data->stack_a->nbr > data->stack_a->next->nbr)
-		{
-			ft_sa(data);
-			data->counter++;
-		}
-		if(data->stack_a->next->nbr > data->stack_a->next->next->nbr)
-		{
-			ft_rra(data);
-			data->counter++;
-		}
+		ft_ra(data);
+		data->counter++;
 	}
-	
+	else if (data->stack_a->nbr < data->stack_a->next->nbr && 
+	data->stack_a->nbr > data->stack_a->next->next->nbr)
+	{
+		ft_rra(data);
+		data->counter++;
+	}
+
+	if(data->stack_a->nbr > data->stack_a->next->nbr)
+	{
+		ft_sa(data);
+		data->counter++;
+	}
+	if(data->stack_a->next->nbr > data->stack_a->next->next->nbr)
+	{
+		ft_rra(data);
+		data->counter++;
+	}
+	if(data->stack_a->next->next->nbr > data->stack_a->nbr)
+		ft_rra(data);
 }
 void	ft_sort_2(t_data *data)
 {
@@ -36,35 +45,5 @@ void	ft_sort_2(t_data *data)
 	{
 		ft_sa(data);
 		data->counter++;
-	}
-}
-void	ft_sort_4(t_data *data) // do not work with 1 4 3 2 // maj : ca va pas te servir
-{
-	// mi
-	
-	while(ft_is_sorted(data)!= 1) // not working
-	{
-		if(data->stack_a->nbr > data->stack_a->next->nbr)
-		{
-			ft_ra(data);
-			data->counter++;
-		}
-		else if(data->stack_a->nbr < data->stack_a->next->nbr &&
-		data->stack_a->nbr < data->stack_a->next->next->nbr)
-		{
-			ft_ra(data);
-			data->counter++;
-		}
-		if(data->stack_a->nbr > data->stack_a->next->nbr)
-		{
-			ft_sa(data);
-			data->counter++;
-		}
-		if(data->counter == 4)
-		{
-			ft_ra(data);
-			data->counter++;
-		}
-		printf("DATA COUNTER : %d\n",data->counter);
 	}
 }

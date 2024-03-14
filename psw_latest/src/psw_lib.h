@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   psw_lib.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/14 11:26:05 by whamdi            #+#    #+#             */
+/*   Updated: 2024/03/14 11:36:55 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PSW_LIB_H
 #include <stdio.h>
 #include <stdlib.h>
@@ -89,4 +101,13 @@ void ft_sb(t_data *data);
 void ft_ss(t_data *data);
 void ft_rr(t_data *data);
 void ft_rrr(t_data *data);
+int ft_lowest_cost_sa(t_data *data,t_list *stack);
+int ft_is_sorted(t_data *data);
+int lower_nbr(t_list *stack_b);
+int index_lower_nbr(t_list *stack_b);
+int index_higher_nbr(t_list *stack_b);
+int is_max_or_min(t_list *stack_a, t_list *stack_b);
+int index_middle_nbr(t_data *data);
+int higher_nbr(t_list *stack_b);
+int ft_simplify_cost(t_data *data);
 #endif
