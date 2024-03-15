@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:17 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/14 15:17:13 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/15 13:19:36 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_cost(t_data *data)
 			data->f_cost_a[1] = data->cost_a[1];
 			data->f_cost_b[0] = data->cost_b[0];
 			data->f_cost_b[1] = data->cost_b[1];
-			ft_printf("final cost : %d\n",data->final_cost);
+			ft_printf("final cost : %d, nbr choosed : %d\n",data->final_cost,temp_a->nbr);
 			cur_lowest = data->i;
 		}
 		data->i++;
@@ -122,6 +122,7 @@ void ft_doner(t_data *data)
 		//stack_a_visualizer(data->stack_a);
 		ft_printf("---------\n");
 		stack_b_visualizer(data->stack_b);
+		stack_a_visualizer(data->stack_a);
 	}
 	if(ft_list_lenght(data->stack_a)== 3)
 		ft_sort_3(data);

@@ -6,38 +6,37 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:23 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/14 15:03:29 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/15 14:37:14 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "psw_lib.h"
+
 void ft_sort_3(t_data *data)
 {
-	if(data->stack_a->nbr > data->stack_a->next->nbr && 
-	data->stack_a->nbr > data->stack_a->next->next->nbr)
+	int el1;
+	int el2;
+	int el3;
+	el1 = data->stack_a->nbr;
+	el2 = data->stack_a->next->nbr;
+	el3 = data->stack_a->next->next->nbr;
+
+	if(lower_nbr(data->stack_a) == el1)
+	{
+		ft_rra(data);
+		ft_sa(data);
+	}
+	else if (higher_nbr(data->stack_a) == el1)
 	{
 		ft_ra(data);
-		data->counter++;
+		if(!ft_is_sorted(data))
+			ft_sa(data);
 	}
-	else if (data->stack_a->nbr < data->stack_a->next->nbr && 
-	data->stack_a->nbr > data->stack_a->next->next->nbr)
-	{
+	if(lower_nbr(data->stack_a) == el3)
 		ft_rra(data);
-		data->counter++;
-	}
-
-	if(data->stack_a->nbr > data->stack_a->next->nbr)
-	{
-		ft_sa(data);
-		data->counter++;
-	}
-	if(data->stack_a->next->nbr > data->stack_a->next->next->nbr)
-	{
-		ft_rra(data);
-		data->counter++;
-	}
-	if(data->stack_a->next->next->nbr > data->stack_a->nbr)
-		ft_rra(data);
+	if(!ft_is_sorted(data))
+		ft_sort_3(data);
+	
 }
 void	ft_sort_2(t_data *data)
 {
