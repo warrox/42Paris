@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:17 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/15 13:19:36 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/15 16:09:02 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_cost(t_data *data)
 	while(temp_a != NULL)
 	{
 		counter_cur = ft_lowest_cost_sa(data,temp_a);
+		printf("i = %d, cost_a[0] : %d, cost_b[0] : %d len = %d\n", data->i,data->cost_a[0],data->cost_b[0], ft_list_lenght(data->stack_a));
 		if(data->final_cost == 0)
 			return(0);
 		if (counter_cur < data->final_cost)
@@ -114,10 +115,12 @@ void ft_action(t_data *data)
 
 void ft_doner(t_data *data)
 {
+	int i = 0;
 	ft_pb(data);
 	ft_pb(data);
 	while(ft_list_lenght(data->stack_a) > 3)
 	{
+		printf("ACTION = %d\n", i++);
 		ft_action(data);
 		//stack_a_visualizer(data->stack_a);
 		ft_printf("---------\n");

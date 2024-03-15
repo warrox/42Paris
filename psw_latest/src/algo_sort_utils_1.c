@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:27:25 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/14 11:29:04 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/15 16:27:44 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,21 @@ int is_max_or_min(t_list *stack_a, t_list *stack_b)
 	return(0);
 }
 
+
+int find_nbr(t_list *stack, int index)
+{
+	int i;
+
+	i = 0;
+	while (stack && i < index)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (stack->nbr);
+}
+
+
 int index_middle_nbr(t_data *data)
 {
     int nbr;
@@ -42,13 +57,15 @@ int index_middle_nbr(t_data *data)
     int f_index = -1;
     int dif;
     int best_dif = INT_MAX;
+	t_list *stack_a_tmp = data->stack_a;
     t_list *stack_b = data->stack_b;
-    nbr = data->stack_a->nbr;
+    nbr = find_nbr(stack_a_tmp, data->i);
 
     index = 0;
+	printf("nbr = %d\n", nbr);
     while (stack_b != NULL)
     {
-        if (stack_b->nbr < nbr)
+        if (nbr > stack_b->nbr)
         {
             dif = nbr - stack_b->nbr;
             if (dif < best_dif)
