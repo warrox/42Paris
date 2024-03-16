@@ -76,17 +76,17 @@ int ft_lowest_cost_sa(t_data *data,t_list *stack)
 	{
 		ft_cost_mediane(data->stack_a, data->i, data->cost_a);
 		data->index_b = index_higher_nbr(data->stack_b);
-		printf("higher index_b = %d\n", data->index_b);
+		//printf("higher index_b = %d\n", data->index_b);
 		ft_cost_mediane(data->stack_b, data->index_b, data->cost_b);
 	}
 	else if(is_max_or_min(stack,data->stack_b) == 0)
 	{
 		ft_cost_mediane(data->stack_a, data->i, data->cost_a);
 		data->index_b = index_middle_nbr(data);
-		printf("middle index_b = %d\n", data->index_b);
+		//printf("middle index_b = %d\n", data->index_b);
 		ft_cost_mediane(data->stack_b, data->index_b, data->cost_b);
 	}
-	ft_printf("cost_a : %d, cost_b : %d\n", data->cost_a[0], data->cost_b[0]);
+	//ft_printf("cost_a : %d, cost_b : %d\n", data->cost_a[0], data->cost_b[0]);
 	cost =  ft_simplify_cost(data);
 	return(cost);
 }

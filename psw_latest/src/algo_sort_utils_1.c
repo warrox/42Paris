@@ -62,7 +62,7 @@ int index_middle_nbr(t_data *data)
     nbr = find_nbr(stack_a_tmp, data->i);
 
     index = 0;
-	printf("nbr = %d\n", nbr);
+//	printf("nbr = %d\n", nbr);
     while (stack_b != NULL)
     {
         if (nbr > stack_b->nbr)

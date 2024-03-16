@@ -33,6 +33,7 @@ int main(int argc, char **argv)
 		ft_psw_parser(&data);
 		ft_sort(&data);
 		stack_a_visualizer(data.stack_a);
+		stack_b_visualizer(data.stack_b);
 	}
 }
 

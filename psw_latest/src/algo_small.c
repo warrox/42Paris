@@ -20,23 +20,20 @@ void ft_sort_3(t_data *data)
 	el1 = data->stack_a->nbr;
 	el2 = data->stack_a->next->nbr;
 	el3 = data->stack_a->next->next->nbr;
-
 	if(lower_nbr(data->stack_a) == el1)
 	{
 		ft_rra(data);
-		ft_sa(data);
+		if(el2 > el3)
+			ft_rra(data);
 	}
-	else if (higher_nbr(data->stack_a) == el1)
+	if(higher_nbr(data->stack_a) == el1 && el2 < el3)
 	{
 		ft_ra(data);
-		if(!ft_is_sorted(data))
-			ft_sa(data);
-	}
-	if(lower_nbr(data->stack_a) == el3)
+		ft_sa(data);
 		ft_rra(data);
-	if(!ft_is_sorted(data))
-		ft_sort_3(data);
-	
+	}
+	if(el1 < el2)
+		ft_sa(data);
 }
 void	ft_sort_2(t_data *data)
 {

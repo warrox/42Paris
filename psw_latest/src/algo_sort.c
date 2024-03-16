@@ -33,7 +33,7 @@ int	ft_cost(t_data *data)
 	while(temp_a != NULL)
 	{
 		counter_cur = ft_lowest_cost_sa(data,temp_a);
-		printf("i = %d, cost_a[0] : %d, cost_b[0] : %d len = %d\n", data->i,data->cost_a[0],data->cost_b[0], ft_list_lenght(data->stack_a));
+		//printf("i = %d, cost_a[0] : %d, cost_b[0] : %d len = %d\n", data->i,data->cost_a[0],data->cost_b[0], ft_list_lenght(data->stack_a));
 		if(data->final_cost == 0)
 			return(0);
 		if (counter_cur < data->final_cost)
@@ -43,7 +43,7 @@ int	ft_cost(t_data *data)
 			data->f_cost_a[1] = data->cost_a[1];
 			data->f_cost_b[0] = data->cost_b[0];
 			data->f_cost_b[1] = data->cost_b[1];
-			ft_printf("final cost : %d, nbr choosed : %d\n",data->final_cost,temp_a->nbr);
+			//ft_printf("final cost : %d, nbr choosed : %d\n",data->final_cost,temp_a->nbr);
 			cur_lowest = data->i;
 		}
 		data->i++;
@@ -115,18 +115,20 @@ void ft_action(t_data *data)
 
 void ft_doner(t_data *data)
 {
-	int i = 0;
+	//int i = 0;
 	ft_pb(data);
 	ft_pb(data);
 	while(ft_list_lenght(data->stack_a) > 3)
 	{
-		printf("ACTION = %d\n", i++);
+		//printf("ACTION = %d\n", i++);
 		ft_action(data);
-		//stack_a_visualizer(data->stack_a);
+		stack_a_visualizer(data->stack_a);
 		ft_printf("---------\n");
 		stack_b_visualizer(data->stack_b);
 		stack_a_visualizer(data->stack_a);
 	}
+	while(data->stack_b->nbr != higher_nbr(data->stack_b))
+		ft_rb(data);
 	if(ft_list_lenght(data->stack_a)== 3)
 		ft_sort_3(data);
 }
