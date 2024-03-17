@@ -113,6 +113,48 @@ void ft_action(t_data *data)
 	ft_pb(data);
 }
 
+void	ft_push_b_to_a(t_data *data)
+{
+	int index;
+	index = 0;
+	ft_data_cost_init(data);
+	while(data->stack_b != NULL)
+	{
+		if(data->stack_b->nbr < lower_nbr(data->stack_a))
+		{
+			index = index_lower_nbr(data->stack_a);
+			ft_cost_mediane(data->stack_a,index,data->cost_a);
+		}
+		else if(data->stack_b->nbr > higher_nbr(data->stack_a))
+		{
+			index = index_higher_nbr(data->stack_a);
+			ft_cost_mediane(data->stack_a,index,data->cost_a);
+		}
+		else
+		{
+			index = index_middle_nbr_a(data);
+			ft_cost_mediane(data->stack_a,index,data->cost_a);
+		}
+		if(data->cost_a[1] == UP)
+		{
+			while(data->cost_a[0] > 0)
+			{
+				ft_ra(data);
+				data->cost_a[0]--;
+			}
+		}
+		if(data->cost_a[1] == DOWN)
+		{
+			while(data->cost_a[0] > 0)
+			{
+				ft_rra(data);
+				data->cost_a[0]--;
+			}
+		}
+		ft_pa(data);
+	}
+}
+
 void ft_doner(t_data *data)
 {
 	//int i = 0;
@@ -122,15 +164,12 @@ void ft_doner(t_data *data)
 	{
 		//printf("ACTION = %d\n", i++);
 		ft_action(data);
-		stack_a_visualizer(data->stack_a);
-		ft_printf("---------\n");
-		stack_b_visualizer(data->stack_b);
-		stack_a_visualizer(data->stack_a);
+		// stack_a_visualizer(data->stack_a);
+		// ft_printf("---------\n");
+		// stack_b_visualizer(data->stack_b);
+		// stack_a_visualizer(data->stack_a);
 	}
-	while(data->stack_b->nbr != higher_nbr(data->stack_b))
-		ft_rb(data);
-	if(ft_list_lenght(data->stack_a)== 3)
-		ft_sort_3(data);
+	ft_push_b_to_a(data);
 }
 
 

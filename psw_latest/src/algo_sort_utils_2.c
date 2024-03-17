@@ -12,7 +12,7 @@
 
 #include "psw_lib.h"
 
-void ft_cost_mediane(t_list *stack, int i, int *cost) // not working
+void ft_cost_mediane(t_list *stack, int i, int *cost)
 {
 	int med;
 	int len;

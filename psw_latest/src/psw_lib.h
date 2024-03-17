@@ -108,6 +108,7 @@ int index_lower_nbr(t_list *stack_b);
 int index_higher_nbr(t_list *stack_b);
 int is_max_or_min(t_list *stack_a, t_list *stack_b);
 int index_middle_nbr(t_data *data);
+int index_middle_nbr_a(t_data *data);
 int higher_nbr(t_list *stack_b);
 int ft_simplify_cost(t_data *data);
 #endif
