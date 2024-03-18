@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:27:25 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/15 16:27:44 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/18 13:15:39 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ int index_middle_nbr_a(t_data *data)
     int best_dif = INT_MAX;
 	t_list *stack_b_tmp = data->stack_b;
     t_list *stack_a = data->stack_a;
-    nbr = find_nbr(stack_b_tmp, data->i);
+    ft_printf("valeur de i : %d\n",data->i);
+	nbr = find_nbr(stack_b_tmp, data->i);
 
     index = 0;
 //	printf("nbr = %d\n", nbr);

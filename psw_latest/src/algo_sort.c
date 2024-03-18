@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:17 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/15 16:09:02 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:23:59 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_cost(t_data *data)
 			data->f_cost_a[1] = data->cost_a[1];
 			data->f_cost_b[0] = data->cost_b[0];
 			data->f_cost_b[1] = data->cost_b[1];
-			//ft_printf("final cost : %d, nbr choosed : %d\n",data->final_cost,temp_a->nbr);
+			ft_printf("final cost : %d, nbr choosed : %d\n",data->final_cost,temp_a->nbr);
 			cur_lowest = data->i;
 		}
 		data->i++;
@@ -113,47 +113,7 @@ void ft_action(t_data *data)
 	ft_pb(data);
 }
 
-void	ft_push_b_to_a(t_data *data)
-{
-	int index;
-	index = 0;
-	ft_data_cost_init(data);
-	while(data->stack_b != NULL)
-	{
-		if(data->stack_b->nbr < lower_nbr(data->stack_a))
-		{
-			index = index_lower_nbr(data->stack_a);
-			ft_cost_mediane(data->stack_a,index,data->cost_a);
-		}
-		else if(data->stack_b->nbr > higher_nbr(data->stack_a))
-		{
-			index = index_higher_nbr(data->stack_a);
-			ft_cost_mediane(data->stack_a,index,data->cost_a);
-		}
-		else
-		{
-			index = index_middle_nbr_a(data);
-			ft_cost_mediane(data->stack_a,index,data->cost_a);
-		}
-		if(data->cost_a[1] == UP)
-		{
-			while(data->cost_a[0] > 0)
-			{
-				ft_ra(data);
-				data->cost_a[0]--;
-			}
-		}
-		if(data->cost_a[1] == DOWN)
-		{
-			while(data->cost_a[0] > 0)
-			{
-				ft_rra(data);
-				data->cost_a[0]--;
-			}
-		}
-		ft_pa(data);
-	}
-}
+
 
 void ft_doner(t_data *data)
 {
@@ -169,7 +129,17 @@ void ft_doner(t_data *data)
 		// stack_b_visualizer(data->stack_b);
 		// stack_a_visualizer(data->stack_a);
 	}
-	ft_push_b_to_a(data);
+	stack_a_visualizer(data->stack_a);
+	ft_printf("---HERE---\n");
+	ft_sort_3(data);
+	stack_a_visualizer(data->stack_a);
+	stack_b_visualizer(data->stack_b);
+	while(data->stack_b != NULL)
+	{
+		ft_push_b_to_a(data);
+		ft_action_a(data);
+		ft_pa(data);
+	}
 }
 
 

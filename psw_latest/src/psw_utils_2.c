@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:26:14 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/14 13:55:49 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/18 13:08:11 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void ft_pa(t_data *data)
 		first_b->next = NULL;
 		ft_lstadd_front(&data->stack_a,first_b);
 	}
+	ft_printf("pa\n");
 }
 
 

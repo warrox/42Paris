@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:23 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/15 16:34:40 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:26:50 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,16 @@ void ft_sort_3(t_data *data)
 	el3 = data->stack_a->next->next->nbr;
 	if(lower_nbr(data->stack_a) == el1)
 	{
-		ft_rra(data);
-		if(el2 > el3)
-			ft_rra(data);
-	}
-	if(higher_nbr(data->stack_a) == el1 && el2 < el3)
-	{
 		ft_ra(data);
-		ft_sa(data);
-		ft_rra(data);
+	}
+	if(higher_nbr(data->stack_a) == el1)
+	{
+		if(el2 < el3)
+		{
+			ft_ra(data);
+			ft_ra(data);
+			ft_sa(data);
+		}
 	}
 	if(el1 < el2)
 		ft_sa(data);
