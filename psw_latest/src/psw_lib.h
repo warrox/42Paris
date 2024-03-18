@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:26:05 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/18 14:11:42 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:01:35 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,8 @@ int ft_simplify_cost(t_data *data);
 void ft_action_a(t_data *data);
 void	ft_push_b_to_a(t_data *data);
 void ft_data_cost_init(t_data *data);
-
+void ft_act_up(t_data *data);
+void ft_act_down(t_data *data);
+int index_higher_nbr(t_list *stack_b);
+int find_nbr(t_list *stack, int index);
 #endif

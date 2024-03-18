@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:26:10 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/14 11:26:11 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/18 16:12:23 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ long ft_atoi_cust(const char *nbr)
 	int	result;
 	int	sign;
 	const char *save;
+	char *str;
 
 	sign = 1;
 	result = 0;
@@ -62,7 +63,12 @@ long ft_atoi_cust(const char *nbr)
 		return(__LONG_MAX__);
 	while (*nbr && (*nbr >= '0' && *nbr <= '9'))
 		result = (*nbr++ - '0') + result * 10;
-	if(!ft_strncmp(ft_itoa(result*sign),save,ft_strlen(save)))
+	str = ft_itoa(result * sign);
+	if(!ft_strncmp(str,save,ft_strlen(save)))
+	{
+		free(str);
 		return((long)result * sign);
+	}
+	free(str);
 	return(__LONG_MAX__);
 }

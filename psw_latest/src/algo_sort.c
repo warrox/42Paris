@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:17 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/18 15:23:59 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:07:41 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,63 +59,14 @@ void ft_action(t_data *data)
 		ft_pb(data);
 		return;
 	}
-	if(data->f_cost_a[1] == UP && data->f_cost_b[1] == UP)
-	{
-		while(data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
-		{
-			ft_rr(data);
-			data->f_cost_a[0]--;
-			data->f_cost_b[0]--;
-		}
-	}
-	if(data->f_cost_a[1] == UP)
-	{
-		while(data->f_cost_a[0] > 0)
-		{
-			ft_ra(data);
-			data->f_cost_a[0]--;
-		}
-	}
-	if(data->f_cost_b[1] == UP)
-	{
-		while(data->f_cost_b[0] > 0)
-		{
-			ft_rb(data);
-			data->f_cost_b[0]--;
-		}
-	}
-	
-	if(data->f_cost_a[1] == DOWN && data->f_cost_b[1] == DOWN)
-	{
-		while(data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
-		{
-			ft_rrr(data);
-			data->f_cost_a[0]--;
-			data->f_cost_b[0]--;
-		}
-	}
-	if(data->f_cost_a[1] == DOWN)
-	{
-		while(data->f_cost_a[0] > 0)
-		{
-			ft_rra(data);
-			data->f_cost_a[0]--;
-		}
-	}
-	if(data->f_cost_b[1] == DOWN)
-	{
-		while(data->f_cost_b[0] > 0)
-		{
-			ft_rrb(data);
-			data->f_cost_b[0]--;
-		}
-	}
+	ft_act_up(data);
+	ft_act_down(data);
 	ft_pb(data);
 }
 
 
 
-void ft_doner(t_data *data)
+void ft_sort_up_4(t_data *data)
 {
 	//int i = 0;
 	ft_pb(data);
@@ -154,7 +105,8 @@ void ft_sort(t_data *data)
 	if(ft_list_lenght(data->stack_a) == 3)
 		ft_sort_3(data);
 	if(ft_list_lenght(data->stack_a) > 4)
-		ft_doner(data);
+		ft_sort_up_4(data);
+	
 	// if(ft_list_lenght(data->stack_a) == 4)
 	// 	ft_sort_4(data);
 }

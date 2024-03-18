@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:45:01 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/18 15:51:36 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/18 16:39:45 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int main(int argc, char **argv)
 		free(data.stack_a);
 		free(data.stack_b);
 		exit(1);
-		//stack_b_visualizer(data.stack_b);
 	}
 }
 
