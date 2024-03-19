@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:17 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/19 17:11:42 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/19 18:03:28 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-void ft_data_cost_init(t_data *data)
-{
-	data->final_cost = INT_MAX;
-	data->f_cost_a[0] = INT_MAX;
-	data->f_cost_a[1] = INT_MAX;
-	data->f_cost_b[0] = INT_MAX;
-	data->f_cost_b[1] = INT_MAX;
-	data->i = 0;
-}
 int	ft_cost(t_data *data)
 {
 	t_list *temp_a = data->stack_a;
@@ -63,28 +53,6 @@ void ft_action(t_data *data)
 	ft_act_down(data);
 	ft_pb(data);
 }
-
-
-int push_lowest_top(t_list *a)
-{
-	t_list *tmp = a;
-	int lowest = INT_MAX;
-	int i = 0;
-	int index = -1;
-	
-	while (tmp)
-	{
-		if (tmp->nbr < lowest)
-		{
-			lowest = tmp->nbr;
-			index = i;
-		}
-		tmp = tmp->next;
-		i++;
-	}
-	return (index);
-}
-
 
 void ft_sort_up_4(t_data *data)
 {

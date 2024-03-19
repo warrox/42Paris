@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:26:05 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/19 17:56:22 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/19 18:04:02 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,7 @@ void ft_act_up(t_data *data);
 void ft_act_down(t_data *data);
 int index_higher_nbr(t_list *stack_b);
 int find_nbr(t_list *stack, int index);
+int is_max_or_min_a(t_list *stack_a, t_list *stack_b);
+void ft_data_cost_init(t_data *data);
+int push_lowest_top(t_list *a);
 #endif

@@ -6,7 +6,7 @@ SRCS = src/main.c src/psw_utils.c src/parser.c \
        src/psw_utils_1.c src/psw_utils_2.c src/ft_split.c \
        src/ft_itoa.c src/algo_sort.c src/psw_utils_3.c src/algo_small.c \
 	   src/is_sorted.c src/algo_sort_utils_1.c src/algo_sort_utils_2.c \
-	   src/algo_sort_utils_3.c src/algo_sort_utils_4.c
+	   src/algo_sort_utils_3.c src/algo_sort_utils_4.c src/algo_sort_utils_5.c
 OBJS = $(SRCS:%.c=%.o)
 
 PRINTFPATH = ./Printf/
