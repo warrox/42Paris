@@ -6,12 +6,11 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:23 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/18 15:26:50 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/19 17:20:24 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "psw_lib.h"
-
 void ft_sort_3(t_data *data)
 {
 	int el1;
@@ -20,20 +19,13 @@ void ft_sort_3(t_data *data)
 	el1 = data->stack_a->nbr;
 	el2 = data->stack_a->next->nbr;
 	el3 = data->stack_a->next->next->nbr;
-	if(lower_nbr(data->stack_a) == el1)
-	{
-		ft_ra(data);
-	}
 	if(higher_nbr(data->stack_a) == el1)
+		ft_ra(data);
+	if(higher_nbr(data->stack_a) == el2)
 	{
-		if(el2 < el3)
-		{
-			ft_ra(data);
-			ft_ra(data);
-			ft_sa(data);
-		}
+		ft_rra(data);
 	}
-	if(el1 < el2)
+	if(data->stack_a->nbr > data->stack_a->next->nbr)
 		ft_sa(data);
 }
 void	ft_sort_2(t_data *data)

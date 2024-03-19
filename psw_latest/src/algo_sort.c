@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:17 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/18 17:07:41 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/19 17:11:42 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,26 @@ void ft_action(t_data *data)
 }
 
 
+int push_lowest_top(t_list *a)
+{
+	t_list *tmp = a;
+	int lowest = INT_MAX;
+	int i = 0;
+	int index = -1;
+	
+	while (tmp)
+	{
+		if (tmp->nbr < lowest)
+		{
+			lowest = tmp->nbr;
+			index = i;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return (index);
+}
+
 
 void ft_sort_up_4(t_data *data)
 {
@@ -87,10 +107,25 @@ void ft_sort_up_4(t_data *data)
 	stack_b_visualizer(data->stack_b);
 	while(data->stack_b != NULL)
 	{
-		ft_push_b_to_a(data);
 		ft_action_a(data);
 		ft_pa(data);
+		if(data->stack_a->nbr == higher_nbr(data->stack_a))
+			ft_ra(data);
+		ft_printf("BIM\n");
+		stack_a_visualizer(data->stack_a);
 	}
+	int nb_ra = push_lowest_top(data->stack_a);
+	int moy = ft_list_lenght(data->stack_a) / 2;
+	printf("ra = %d\n", nb_ra);
+	if (nb_ra > moy)
+	{
+		nb_ra -= moy;
+		while (nb_ra--)
+			ft_rra(data);
+	}
+	else
+		while (nb_ra--)
+			ft_ra(data);
 }
 
 
