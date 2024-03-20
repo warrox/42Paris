@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:36 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/18 14:55:11 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 10:16:50 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	ft_is_sorted(t_data *data)
 {
-	t_list *temp;
-	t_list *current;
+	t_list	*temp;
+	t_list	*current;
+
 	current = data->stack_a;
 	temp = data->stack_a->next;
 	while (current && temp)

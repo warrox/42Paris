@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:30 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/14 11:25:31 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 10:15:30 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	**split_fill(char const *s, char c, char **split)
 
 char	**ft_split(char const *s, char c)
 {
-	char **split;
+	char	**split;
 
 	if (!s)
 		return (NULL);

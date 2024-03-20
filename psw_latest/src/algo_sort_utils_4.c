@@ -1,37 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_sort_utils_4.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/20 10:10:59 by whamdi            #+#    #+#             */
+/*   Updated: 2024/03/20 10:11:23 by whamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "psw_lib.h"
 
 int	index_middle_nbr_a(t_data *data)
 {
-	int		nbr;
-	int		index;
-	int		f_index;
-	int		dif;
-	int		best_dif;
 	t_list	*stack_b_tmp;
 	t_list	*stack_a;
 
-	f_index = -1;
-	best_dif = INT_MAX;
+	data->f_index = -1;
+	data->best_dif = INT_MAX;
 	stack_b_tmp = data->stack_b;
 	stack_a = data->stack_a;
-	nbr = find_nbr(stack_b_tmp, 0);
-	index = 0;
+	data->nbr = find_nbr(stack_b_tmp, 0);
+	data->index = 0;
 	while (stack_a != NULL)
 	{
-		if (stack_a->nbr > nbr)
+		if (stack_a->nbr > data->nbr)
 		{
-			dif = stack_a->nbr - nbr;
-			if (dif < best_dif)
+			data->dif = stack_a->nbr - data->nbr;
+			if (data->dif < data->best_dif)
 			{
-				best_dif = dif;
-				f_index = index;
+				data->best_dif = data->dif;
+				data->f_index = data->index;
 			}
 		}
 		stack_a = stack_a->next;
-		index++;
+		data->index++;
 	}
-	return (f_index);
+	return (data->f_index);
 }
+
 int	is_max_or_min_a(t_list *stack_a, t_list *stack_b)
 {
 	if (stack_a->nbr < lower_nbr(stack_b))
@@ -40,6 +48,7 @@ int	is_max_or_min_a(t_list *stack_a, t_list *stack_b)
 		return (2);
 	return (0);
 }
+
 int	index_lower_nbr(t_list *stack_b)
 {
 	long	lower;

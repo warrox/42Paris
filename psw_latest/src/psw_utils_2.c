@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:26:14 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/18 13:08:11 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 15:29:06 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_pa(t_data *data)
 void	display_error(void)
 {
 	write(1, "Error\n", 6);
+	exit(1);
 }
 
 int	is_not_null(char *str)
@@ -64,34 +65,6 @@ int	is_not_null(char *str)
 	return (0);
 }
 
-void	stack_a_visualizer(t_list *stack_a)
-{
-	t_list	*copy;
-
-	copy = stack_a;
-	if (!copy)
-		return ;
-	printf("Stack A\n");
-	while (copy)
-	{
-		printf("|%ld|\n", copy->nbr);
-		copy = copy->next;
-	}
-}
-void	stack_b_visualizer(t_list *stack_b)
-{
-	t_list	*copy;
-
-	copy = stack_b;
-	if (!copy)
-		return ;
-	printf("Stack B\n");
-	while (copy)
-	{
-		printf("|%ld|\n", copy->nbr);
-		copy = copy->next;
-	}
-}
 int	is_lst_double_nb(t_list *lst)
 {
 	t_list	*temp;

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:29:48 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/19 18:10:36 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 09:05:23 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,11 @@ int	ft_simplify_cost(t_data *data)
 	}
 	return (cost);
 }
+
 int	ft_lowest_cost_sa(t_data *data, t_list *stack)
 {
-	int cost;
+	int	cost;
+
 	data->cost_a[0] = 0;
 	data->cost_a[1] = 0;
 	data->cost_b[0] = 0;

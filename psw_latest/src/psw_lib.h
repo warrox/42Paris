@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:26:05 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/19 18:04:02 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 14:22:20 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct s_data
 	int				final_cost;
 	int				f_cost_a[2];
 	int				f_cost_b[2];
+	int				nbr;
+	int				index;
+	int				f_index;
+	int				dif;
+	int				best_dif;
+	int				cur_lowest;
 
 	t_list			*stack_a;
 	t_list			*stack_b;
@@ -61,15 +67,13 @@ t_list				*ft_lstnew(long nb);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 int					ft_list_lenght(t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new);
+void				ft_lstclear(t_list **lst);
 
 /*******************************************************************/
 /*                        PRINT  FUNC                 				*/
 /*******************************************************************/
 
-void				stack_a_visualizer(t_list *stack_a);
-void				stack_b_visualizer(t_list *stack_b);
 void				display_error(void);
-void				counter_print(t_data *data);
 
 /*******************************************************************/
 /*                        HANDLE ERROR FUNC               			*/
@@ -78,13 +82,14 @@ int					is_lst_double_nb(t_list *lst);
 int					is_not_null(char *str);
 
 /*******************************************************************/
-/*                        PARSER             			            */
+/*                        PARSER             					      */
 /*******************************************************************/
 int					ft_psw_parser(t_data *data);
 
 /*******************************************************************/
 /*                        PUSH FUNC // SORT FUNC            		*/
 /*******************************************************************/
+
 void				ft_pb(t_data *data);
 void				ft_pa(t_data *data);
 void				ft_sort(t_data *data);
@@ -93,12 +98,12 @@ void				ft_sort_3(t_data *data);
 void				ft_sort_2(t_data *data);
 int					ft_is_sorted(t_data *data);
 void				ft_cost_mediane(t_list *stack, int i, int *cost);
-void				ft_ra(t_data *data);
-void				ft_rb(t_data *data);
-void				ft_rra(t_data *data);
-void				ft_rrb(t_data *data);
-void				ft_sa(t_data *data);
-void				ft_sb(t_data *data);
+void				ft_ra(t_data *data, int flag);
+void				ft_rb(t_data *data, int flag);
+void				ft_rra(t_data *data, int flag);
+void				ft_rrb(t_data *data, int flag);
+void				ft_sa(t_data *data, int flag);
+void				ft_sb(t_data *data, int flag);
 void				ft_ss(t_data *data);
 void				ft_rr(t_data *data);
 void				ft_rrr(t_data *data);
@@ -121,4 +126,5 @@ int					find_nbr(t_list *stack, int index);
 int					is_max_or_min_a(t_list *stack_a, t_list *stack_b);
 void				ft_data_cost_init(t_data *data);
 int					push_lowest_top(t_list *a);
+void				ft_put_lowest_a_at_top(t_data *data);
 #endif

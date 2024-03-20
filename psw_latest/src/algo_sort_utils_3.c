@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:52:09 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/19 18:13:00 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 14:12:00 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_cost_a(t_data *data)
 		ft_cost_mediane(data->stack_a, index, data->cost_a);
 	}
 }
+
 void	ft_action_a(t_data *data)
 {
 	ft_cost_a(data);
@@ -43,7 +44,7 @@ void	ft_action_a(t_data *data)
 	{
 		while (data->cost_a[0] > 0)
 		{
-			ft_ra(data);
+			ft_ra(data, 1);
 			data->cost_a[0]--;
 		}
 	}
@@ -51,11 +52,12 @@ void	ft_action_a(t_data *data)
 	{
 		while (data->cost_a[0] > 0)
 		{
-			ft_rra(data);
+			ft_rra(data, 1);
 			data->cost_a[0]--;
 		}
 	}
 }
+
 void	ft_act_up(t_data *data)
 {
 	if (data->f_cost_a[1] == UP && data->f_cost_b[1] == UP)
@@ -71,7 +73,7 @@ void	ft_act_up(t_data *data)
 	{
 		while (data->f_cost_a[0] > 0)
 		{
-			ft_ra(data);
+			ft_ra(data, 1);
 			data->f_cost_a[0]--;
 		}
 	}
@@ -79,7 +81,7 @@ void	ft_act_up(t_data *data)
 	{
 		while (data->f_cost_b[0] > 0)
 		{
-			ft_rb(data);
+			ft_rb(data, 1);
 			data->f_cost_b[0]--;
 		}
 	}
@@ -100,7 +102,7 @@ void	ft_act_down(t_data *data)
 	{
 		while (data->f_cost_a[0] > 0)
 		{
-			ft_rra(data);
+			ft_rra(data, 1);
 			data->f_cost_a[0]--;
 		}
 	}
@@ -108,7 +110,7 @@ void	ft_act_down(t_data *data)
 	{
 		while (data->f_cost_b[0] > 0)
 		{
-			ft_rrb(data);
+			ft_rrb(data, 1);
 			data->f_cost_b[0]--;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:17 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/20 08:22:18 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 14:10:05 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ int	ft_cost(t_data *data)
 {
 	t_list	*temp_a;
 	int		counter_cur;
-	int		cur_lowest;
 
 	temp_a = data->stack_a;
 	counter_cur = 0;
-	cur_lowest = INT_MAX;
+	data->cur_lowest = INT_MAX;
 	ft_data_cost_init(data);
 	while (temp_a != NULL)
 	{
@@ -36,13 +35,14 @@ int	ft_cost(t_data *data)
 			data->f_cost_a[1] = data->cost_a[1];
 			data->f_cost_b[0] = data->cost_b[0];
 			data->f_cost_b[1] = data->cost_b[1];
-			cur_lowest = data->i;
+			data->cur_lowest = data->i;
 		}
 		data->i++;
 		temp_a = temp_a->next;
 	}
-	return (cur_lowest);
+	return (data->cur_lowest);
 }
+
 void	ft_action(t_data *data)
 {
 	ft_cost(data);
@@ -58,9 +58,6 @@ void	ft_action(t_data *data)
 
 void	ft_sort_up_4(t_data *data)
 {
-	int	nb_ra;
-	int	moy;
-
 	ft_pb(data);
 	ft_pb(data);
 	while (ft_list_lenght(data->stack_a) > 3)
@@ -71,19 +68,9 @@ void	ft_sort_up_4(t_data *data)
 		ft_action_a(data);
 		ft_pa(data);
 		if (data->stack_a->nbr == higher_nbr(data->stack_a))
-			ft_ra(data);
+			ft_ra(data, 1);
 	}
-	nb_ra = push_lowest_top(data->stack_a);
-	moy = ft_list_lenght(data->stack_a) / 2;
-	if (nb_ra > moy)
-	{
-		nb_ra -= moy;
-		while (nb_ra--)
-			ft_rra(data);
-	}
-	else
-		while (nb_ra--)
-			ft_ra(data);
+	ft_put_lowest_a_at_top(data);
 }
 
 void	ft_sort(t_data *data)
@@ -96,13 +83,13 @@ void	ft_sort(t_data *data)
 		ft_sort_3(data);
 	if (ft_list_lenght(data->stack_a) > 4)
 		ft_sort_up_4(data);
-	if(ft_list_lenght(data->stack_a) == 4)
+	if (ft_list_lenght(data->stack_a) == 4)
 	{
-		while(data->stack_a->nbr != higher_nbr(data->stack_a))
-			ft_ra(data);
+		while (data->stack_a->nbr != higher_nbr(data->stack_a))
+			ft_ra(data, 1);
 		ft_pb(data);
 		ft_sort_3(data);
 		ft_pa(data);
-		ft_ra(data);
+		ft_ra(data, 1);
 	}
 }

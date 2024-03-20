@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:26:10 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/18 16:12:23 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 10:18:47 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	ft_strncmp(const char *first, const char *second, size_t length)
 
 long	ft_atoi_cust(const char *nbr)
 {
-	int result;
-	int sign;
-	const char *save;
-	char *str;
+	const char	*save;
+	int			result;
+	int			sign;
+	char		*str;
 
 	sign = 1;
 	result = 0;

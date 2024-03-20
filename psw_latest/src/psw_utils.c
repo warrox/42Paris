@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:44:53 by whamdi            #+#    #+#             */
-/*   Updated: 2024/02/21 17:12:01 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 14:27:20 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ t_list	*ft_lstnew(long nb)
 	new->next = NULL;
 	return (new);
 }
+
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (new &&lst)
+	if (new && lst)
 	{
 		new->next = *lst;
 		*lst = new;
 	}
 }
+
 t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*current;
@@ -44,6 +46,7 @@ t_list	*ft_lstlast(t_list *lst)
 	}
 	return (current);
 }
+
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
@@ -59,6 +62,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		}
 	}
 }
+
 int	ft_list_lenght(t_list *lst)
 {
 	int		i;
@@ -71,5 +75,5 @@ int	ft_list_lenght(t_list *lst)
 		temp = temp->next;
 		i++;
 	}
-	return (i + 1); // not sure to check if valid
+	return (i + 1);
 }

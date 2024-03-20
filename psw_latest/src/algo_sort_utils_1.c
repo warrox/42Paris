@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:27:25 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/18 17:01:15 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 09:01:42 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	lower_nbr(t_list *stack_b)
 	}
 	return (lower);
 }
+
 int	is_max_or_min(t_list *stack_a, t_list *stack_b)
 {
 	if (stack_a->nbr < lower_nbr(stack_b))
@@ -51,33 +52,28 @@ int	find_nbr(t_list *stack, int index)
 
 int	index_middle_nbr(t_data *data)
 {
-	int		nbr;
-	int		index;
-	int		f_index;
-	int		dif;
-	int		best_dif;
 	t_list	*stack_a_tmp;
 	t_list	*stack_b;
 
-	f_index = -1;
-	best_dif = INT_MAX;
+	data->f_index = -1;
+	data->best_dif = INT_MAX;
 	stack_a_tmp = data->stack_a;
 	stack_b = data->stack_b;
-	nbr = find_nbr(stack_a_tmp, data->i);
-	index = 0;
+	data->nbr = find_nbr(stack_a_tmp, data->i);
+	data->index = 0;
 	while (stack_b != NULL)
 	{
-		if (nbr > stack_b->nbr)
+		if (data->nbr > stack_b->nbr)
 		{
-			dif = nbr - stack_b->nbr;
-			if (dif < best_dif)
+			data->dif = data->nbr - stack_b->nbr;
+			if (data->dif < data->best_dif)
 			{
-				best_dif = dif;
-				f_index = index;
+				data->best_dif = data->dif;
+				data->f_index = data->index;
 			}
 		}
 		stack_b = stack_b->next;
-		index++;
+		data->index++;
 	}
-	return (f_index);
+	return (data->f_index);
 }

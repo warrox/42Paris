@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:27 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/14 11:25:28 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/20 10:14:49 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	ft_int_len(int n)
 
 char	*ft_itoa(int n)
 {
-	char *str;
-	int len;
-	unsigned int num;
+	unsigned int	num;
+	char			*str;
+	int				len;
 
 	len = ft_int_len(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
