@@ -12,7 +12,6 @@
 
 #include "psw_lib.h"
 
-
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -44,10 +43,10 @@ int	ft_strncmp(const char *first, const char *second, size_t length)
 		return (1);
 }
 
-long ft_atoi_cust(const char *nbr)
+long	ft_atoi_cust(const char *nbr)
 {
-	int	result;
-	int	sign;
+	int result;
+	int sign;
 	const char *save;
 	char *str;
 
@@ -56,19 +55,19 @@ long ft_atoi_cust(const char *nbr)
 	save = nbr;
 	if (*nbr && (*nbr == '-'))
 	{
-			sign *= -1;
-			nbr++;
+		sign *= -1;
+		nbr++;
 	}
-	if(*nbr == '+')
-		return(__LONG_MAX__);
+	if (*nbr == '+')
+		return (__LONG_MAX__);
 	while (*nbr && (*nbr >= '0' && *nbr <= '9'))
 		result = (*nbr++ - '0') + result * 10;
 	str = ft_itoa(result * sign);
-	if(!ft_strncmp(str,save,ft_strlen(save)))
+	if (!ft_strncmp(str, save, ft_strlen(save)))
 	{
 		free(str);
-		return((long)result * sign);
+		return ((long)result * sign);
 	}
 	free(str);
-	return(__LONG_MAX__);
+	return (__LONG_MAX__);
 }

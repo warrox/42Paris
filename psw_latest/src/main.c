@@ -13,9 +13,10 @@
 #include "psw_lib.h"
 #include <stdio.h>
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
+
 	data.argv = argv;
 	data.i = -1;
 	data.counter = 0;
@@ -23,13 +24,12 @@ int main(int argc, char **argv)
 	data.argc = argc;
 	data.stack_a = NULL;
 	data.stack_b = NULL;
-	
-	if(data.argc >= 1)
+	if (data.argc >= 1)
 	{
-		if(data.argc == 2 && is_not_null(argv[1]) == 0)
-				data.argv = ft_split(argv[1], ' ');
+		if (data.argc == 2 && is_not_null(argv[1]) == 0)
+			data.argv = ft_split(argv[1], ' ');
 		else
-				data.argv = argv;
+			data.argv = argv;
 		ft_psw_parser(&data);
 		ft_sort(&data);
 		stack_a_visualizer(data.stack_a);
@@ -38,5 +38,3 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 }
-
-

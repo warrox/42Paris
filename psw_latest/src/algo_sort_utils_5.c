@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "psw_lib.h"
-void ft_data_cost_init(t_data *data)
+
+void	ft_data_cost_init(t_data *data)
 {
 	data->final_cost = INT_MAX;
 	data->f_cost_a[0] = INT_MAX;
@@ -20,13 +21,13 @@ void ft_data_cost_init(t_data *data)
 	data->f_cost_b[1] = INT_MAX;
 	data->i = 0;
 }
-int push_lowest_top(t_list *a)
+int	push_lowest_top(t_list *a)
 {
 	t_list *tmp = a;
 	int lowest = INT_MAX;
 	int i = 0;
 	int index = -1;
-	
+
 	while (tmp)
 	{
 		if (tmp->nbr < lowest)

@@ -6,83 +6,78 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:52:09 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/19 18:00:37 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/19 18:13:00 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "psw_lib.h"
 
-
-void 	ft_cost_a(t_data *data)
+void	ft_cost_a(t_data *data)
 {
-	int index;
-	t_list *stack;
+	int		index;
+	t_list	*stack;
+
 	stack = data->stack_b;
 	index = 0;
 	ft_data_cost_init(data);
-	if(is_max_or_min_a(stack,data->stack_a) == 1)
+	if (is_max_or_min_a(stack, data->stack_a) == 1)
 	{
 		index = index_lower_nbr(data->stack_a);
-		printf("%ld*index low= %d\n",data->stack_b->nbr,index);
-		ft_cost_mediane(data->stack_a,index,data->cost_a);
+		ft_cost_mediane(data->stack_a, index, data->cost_a);
 	}
-	if(is_max_or_min_a(stack,data->stack_a) == 2)
+	if (is_max_or_min_a(stack, data->stack_a) == 2)
 	{
 		index = index_lower_nbr(data->stack_a);
-		printf("%ld*index high= %d\n", data->stack_b->nbr,index);
-		ft_cost_mediane(data->stack_a,index,data->cost_a);
-		ft_printf("cost[0] : %d, cost[1] : %d\n",data->cost_a[0],data->cost_a[1]);
+		ft_cost_mediane(data->stack_a, index, data->cost_a);
 	}
-	if(is_max_or_min_a(stack,data->stack_a) == 0)
+	if (is_max_or_min_a(stack, data->stack_a) == 0)
 	{
 		index = index_middle_nbr_a(data);
-		printf("%ld*index = %d\n", data->stack_b->nbr,index);
-		ft_cost_mediane(data->stack_a,index,data->cost_a);
+		ft_cost_mediane(data->stack_a, index, data->cost_a);
 	}
 }
-void ft_action_a(t_data *data)
+void	ft_action_a(t_data *data)
 {
 	ft_cost_a(data);
-	if(data->cost_a[1] == UP)
+	if (data->cost_a[1] == UP)
 	{
-		while(data->cost_a[0] > 0)
+		while (data->cost_a[0] > 0)
 		{
 			ft_ra(data);
 			data->cost_a[0]--;
 		}
-		
 	}
-	if(data->cost_a[1] == DOWN)
+	if (data->cost_a[1] == DOWN)
 	{
-		while(data->cost_a[0] > 0)
+		while (data->cost_a[0] > 0)
 		{
 			ft_rra(data);
 			data->cost_a[0]--;
 		}
 	}
 }
-void ft_act_up(t_data *data)
+void	ft_act_up(t_data *data)
 {
-	if(data->f_cost_a[1] == UP && data->f_cost_b[1] == UP)
+	if (data->f_cost_a[1] == UP && data->f_cost_b[1] == UP)
 	{
-		while(data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
+		while (data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
 		{
 			ft_rr(data);
 			data->f_cost_a[0]--;
 			data->f_cost_b[0]--;
 		}
 	}
-	if(data->f_cost_a[1] == UP)
+	if (data->f_cost_a[1] == UP)
 	{
-		while(data->f_cost_a[0] > 0)
+		while (data->f_cost_a[0] > 0)
 		{
 			ft_ra(data);
 			data->f_cost_a[0]--;
 		}
 	}
-	if(data->f_cost_b[1] == UP)
+	if (data->f_cost_b[1] == UP)
 	{
-		while(data->f_cost_b[0] > 0)
+		while (data->f_cost_b[0] > 0)
 		{
 			ft_rb(data);
 			data->f_cost_b[0]--;
@@ -90,33 +85,31 @@ void ft_act_up(t_data *data)
 	}
 }
 
-void ft_act_down(t_data *data)
+void	ft_act_down(t_data *data)
 {
-	if(data->f_cost_a[1] == DOWN && data->f_cost_b[1] == DOWN)
+	if (data->f_cost_a[1] == DOWN && data->f_cost_b[1] == DOWN)
 	{
-		while(data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
+		while (data->f_cost_a[0] > 0 && data->f_cost_b[0] > 0)
 		{
 			ft_rrr(data);
 			data->f_cost_a[0]--;
 			data->f_cost_b[0]--;
 		}
 	}
-	if(data->f_cost_a[1] == DOWN)
+	if (data->f_cost_a[1] == DOWN)
 	{
-		while(data->f_cost_a[0] > 0)
+		while (data->f_cost_a[0] > 0)
 		{
 			ft_rra(data);
 			data->f_cost_a[0]--;
 		}
 	}
-	if(data->f_cost_b[1] == DOWN)
+	if (data->f_cost_b[1] == DOWN)
 	{
-		while(data->f_cost_b[0] > 0)
+		while (data->f_cost_b[0] > 0)
 		{
 			ft_rrb(data);
 			data->f_cost_b[0]--;
 		}
 	}
 }
-
-

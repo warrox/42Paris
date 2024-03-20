@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "psw_lib.h"
 
 t_list	*ft_lstnew(long nb)
 {
 	t_list	*new;
+
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
@@ -25,7 +25,7 @@ t_list	*ft_lstnew(long nb)
 }
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (new && lst)
+	if (new &&lst)
 	{
 		new->next = *lst;
 		*lst = new;
@@ -59,22 +59,17 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		}
 	}
 }
-int ft_list_lenght(t_list *lst)
+int	ft_list_lenght(t_list *lst)
 {
-	int i;
-	t_list *temp;
+	int		i;
+	t_list	*temp;
+
 	temp = lst;
 	i = 0;
-	while(temp->next != NULL)
+	while (temp->next != NULL)
 	{
 		temp = temp->next;
 		i++;
 	}
-	return(i + 1);// not sure to check if valid
+	return (i + 1); // not sure to check if valid
 }
-
-
-
-
-
-

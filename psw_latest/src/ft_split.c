@@ -89,7 +89,7 @@ char	**split_fill(char const *s, char c, char **split)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**split;
+	char **split;
 
 	if (!s)
 		return (NULL);
