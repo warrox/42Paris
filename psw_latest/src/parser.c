@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:45:20 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/20 15:31:56 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/21 10:42:35 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int	ft_psw_parser(t_data *data)
 {
 	t_list	*new_node;
 
+	if (data->argv[0][0] == '.')
+		data->i = 0;
+	if (data->argv[0][0] != '.')
+		data->i = -1;
 	if (data->argc == 1)
 		exit(1);
 	while (data->argv[++data->i])
