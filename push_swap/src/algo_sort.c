@@ -6,13 +6,11 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:25:17 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/21 15:04:48 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/22 14:10:54 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "psw_lib.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 int	ft_cost(t_data *data)
 {
@@ -70,7 +68,7 @@ void	ft_sort_up_4(t_data *data)
 		if (data->stack_a->nbr == higher_nbr(data->stack_a))
 			ft_ra(data, 1);
 	}
-	ft_put_lowest_a_at_top(data);
+	ft_lowest_top_in_a(data);
 }
 
 void	ft_sort(t_data *data)
@@ -90,8 +88,7 @@ void	ft_sort(t_data *data)
 		ft_sort_up_4(data);
 	if (ft_list_lenght(data->stack_a) == 4)
 	{
-		while (data->stack_a->nbr != higher_nbr(data->stack_a))
-			ft_ra(data, 1);
+		ft_lowest_top_in_a(data);
 		ft_pb(data);
 		ft_sort_3(data);
 		ft_pa(data);

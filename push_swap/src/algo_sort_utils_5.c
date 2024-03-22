@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 18:01:56 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/20 14:13:01 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/22 14:11:02 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,21 @@ int	push_lowest_top(t_list *a)
 	return (index);
 }
 
-void	ft_put_lowest_a_at_top(t_data *data)
+void	ft_lowest_top_in_a(t_data *data)
 {
-	while (data->stack_a->nbr != lower_nbr(data->stack_a))
+	int	index;
+
+	ft_data_cost_init(data);
+	index = index_lower_nbr(data->stack_a);
+	ft_cost_mediane(data->stack_a, index, data->cost_a);
+	if (data->cost_a[1] == UP)
 	{
-		ft_ra(data, 1);
+		while (data->cost_a[0]--)
+			ft_ra(data, 1);
+	}
+	if (data->cost_a[1] == DOWN)
+	{
+		while (data->cost_a[0]--)
+			ft_rra(data, 1);
 	}
 }

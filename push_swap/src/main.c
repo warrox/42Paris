@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:45:01 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/21 13:36:39 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/22 14:12:47 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 	if (data.argc >= 2)
 	{
 		if (data.argc == 2)
-				data.argv = ft_split(argv[1], ' ');
+			data.argv = ft_split(argv[1], ' ');
 		ft_psw_parser(&data);
 		ft_sort(&data);
 		ft_lstclear(&data.stack_a);

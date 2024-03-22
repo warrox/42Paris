@@ -6,7 +6,7 @@
 /*   By: whamdi <whamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:26:05 by whamdi            #+#    #+#             */
-/*   Updated: 2024/03/21 14:57:36 by whamdi           ###   ########.fr       */
+/*   Updated: 2024/03/22 14:11:23 by whamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int					is_lst_double_nb(t_list *lst);
 int					is_not_null(char *str);
 
 /*******************************************************************/
-/*                        PARSER             						   */
+/*                        PARSER             							*/
 /*******************************************************************/
 int					ft_psw_parser(t_data *data);
 
@@ -127,5 +127,5 @@ int					find_nbr(t_list *stack, int index);
 int					is_max_or_min_a(t_list *stack_a, t_list *stack_b);
 void				ft_data_cost_init(t_data *data);
 int					push_lowest_top(t_list *a);
-void				ft_put_lowest_a_at_top(t_data *data);
+void				ft_lowest_top_in_a(t_data *data);
 #endif
